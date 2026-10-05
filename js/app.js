@@ -5350,7 +5350,7 @@
     if(nextU){ var ns=planFor(nextU.day).session||null; var ph=(ns&&ns.phases)||[]; var tot=ph.reduce(function(a,p){return a+(parseInt(p.time,10)||0);},0);
       var bar=ph.map(function(p){var m=parseInt(p.time,10)||0;return '<span style="flex:'+(tot?Math.max(m,1):1)+';background:'+(SECC[p.section]||'#8796a6')+'"></span>';}).join('');
       var rows=ph.map(function(p,i){var c=SECC[p.section]||'#8796a6',m=parseInt(p.time,10)||0;return '<li><span class="hx-num" style="background:'+c+';color:'+(p.section==='Basic Situation'?'#0b1622':'#fff')+'">'+(i+1)+'</span><span class="hx-ph"><b>'+esc(p.section||'Phase')+'</b><small>'+esc(p.block||'Not planned yet')+'</small></span><span class="hx-min">'+(m?m+' min':'')+'</span></li>';}).join('');
-      nextCard='<section class="hx-card"><div class="hx-head"><div class="hx-head-l"><span class="hx-eyebrow dark">Next session · '+esc(nextU.date)+'</span><h2>'+esc(nextU.title)+'</h2><span class="hx-meta">'+esc(nextU.dur)+(ph.length?' · '+ph.length+' phases':'')+(tot?' · '+tot+' min':'')+'</span></div><button class="hx-btn hx-btn-s" data-open="'+nextU.day+'" type="button">'+(ph.length?'Open session':'Build session')+'</button></div>'+(ph.length?'<div class="hx-bar" role="img" aria-label="Session time split by phase">'+bar+'</div><ol class="hx-phases">'+rows+'</ol>':'<p class="hx-empty">No phases yet. Build it Activation → Basic → Extended → Training game → Cool-down.</p>')+'</section>';
+      nextCard='<section class="hx-card"><div class="hx-head"><div class="hx-head-l"><span class="hx-eyebrow dark">Next session · '+esc(nextU.date)+'</span><h2>'+esc(nextU.title)+'</h2><span class="hx-meta">'+esc(nextU.dur)+(ph.length?' · '+ph.length+' phases':'')+(tot?' · '+tot+' min':'')+'</span></div><button class="hx-btn hx-btn-s" data-open="'+nextU.day+'" type="button">'+(ph.length?'Open session':'Build session')+'</button></div>'+(ph.length?'<div class="hx-bar" role="img" aria-label="Session time split by phase">'+bar+'</div><ol class="hx-phases">'+rows+'</ol>':'<p class="hx-empty">No phases yet. Build it: Activation → Basic → Extended → Training game → Cool-down.</p>')+'</section>';
     } else nextCard='<section class="hx-card"><div class="hx-head"><h2>Next session</h2></div><p class="hx-empty">No training days set yet — open the planner to build your week.</p><div><button class="hx-btn hx-btn-s" data-go="week" type="button">Open planner</button></div></section>';
     // ---- next actions ----
     var nextTrain=(nextU&&DOWFULL[nextU.day])||(cycle[0]&&DOWFULL[cycle[0].day])||'Tuesday';
@@ -5649,6 +5649,14 @@
   setBoardTool('move');
   setInspectorTab('details');
   (function(){ var KEY='afc_wk_planmode'; function apply(m){ var sheet=document.querySelector('.view[data-view="week"] .week-flow-sheet'); if(sheet)sheet.classList.toggle('wk-quick',m!=='advanced'); document.querySelectorAll('#wk-planmode [data-pm]').forEach(function(b){b.classList.toggle('on',b.dataset.pm===m);}); } var mode=store.get(KEY,'quick'); var tg=document.getElementById('wk-planmode'); if(tg){ tg.addEventListener('click',function(e){var b=e.target.closest('[data-pm]'); if(!b)return; mode=b.dataset.pm; store.set(KEY,mode); apply(mode);}); } apply(mode); })();
+  // Bridge for scripts that live outside this closure (e.g. js/appbar.js).
+  window.AspireStudio = {
+    store, showStudioView, clubTeams, openTeamSwitcher,
+    openHowItWorks, openMethodKey, openCurriculumRef,
+    get me(){ return me; },
+    get week(){ return week; }
+  };
+  if (window.AppbarRefresh) window.AppbarRefresh();
   initDB();
   try{ var _sbNav=document.querySelector('.navbtn[data-view="session"]'); if(_sbNav) showStudioView('session',_sbNav); }catch(e){}
 })();

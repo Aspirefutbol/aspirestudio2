@@ -1324,7 +1324,7 @@
 .view:not([data-view="board"]) .field input,.view:not([data-view="board"]) .field textarea,.view:not([data-view="board"]) .field select{border-radius:10px;font-size:14px}
 .view:not([data-view="board"]) .field input:focus,.view:not([data-view="board"]) .field textarea:focus,.view:not([data-view="board"]) .field select:focus{border-color:#c9a15b;outline:none;box-shadow:0 0 0 3px rgba(245,189,46,.25)}
 /* Section titles shown in the top bar */
-.view:not([data-view="board"]) .topbar span.title-in,.view:not([data-view="board"]) .topbar input.title-in[readonly]{font-family:'Oswald',sans-serif!important;font-size:28px!important;font-weight:600!important;letter-spacing:.005em;color:var(--ink)!important;background:transparent!important;border-color:transparent!important;min-width:0;field-sizing:content}
-.view:not([data-view="board"]) .topbar input.title-in[readonly]{width:auto;max-width:60%}
+.view:not([data-view="board"]) .topbar span.title-in,.view:not([data-view="board"]) .topbar input.title-in[readonly]:not(.wk-weekchip){font-family:'Oswald',sans-serif!important;font-size:28px!important;font-weight:600!important;letter-spacing:.005em;color:var(--ink)!important;background:transparent!important;border-color:transparent!important;min-width:0;field-sizing:content}
+.view:not([data-view="board"]) .topbar input.title-in[readonly]:not(.wk-weekchip){width:auto;max-width:60%}
 /* Keyboard focus */
 .view button:focus-visible,.view a:focus-visible,.navbtn:focus-visible{outline:3px solid #38bdf8;outline-offset:2px}
