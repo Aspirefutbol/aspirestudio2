@@ -1,0 +1,1282 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<meta name="description" content="Aspire FC Coaching Studio — plan sessions, build drills, and track player development.">
+<meta name="theme-color" content="#0b1f33">
+<title>Aspire Coaching Studio</title>
+<link rel="icon" type="image/png" href="assets/aspire-crest.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&family=Barlow+Semi+Condensed:wght@500;600&display=swap">
+<link rel="stylesheet" href="css/1-base.css">
+<link rel="stylesheet" href="css/2-core.css">
+<link rel="stylesheet" href="css/3-features.css">
+<link rel="stylesheet" href="css/4-governance.css">
+<link rel="stylesheet" href="css/5-themes.css">
+</head>
+<body>
+
+<div class="app">
+  <!-- LEFT RAIL -->
+  <aside class="rail">
+    <div class="brand">
+      <img class="crest" src="assets/aspire-crest.png" alt="Aspire FC">
+      <div class="n"><b>Aspire FC <em style="color:var(--gold);font-style:normal">FOS</em></b><span>Coaching Studio</span><small id="brand-coach-name">Coach</small></div>
+    </div>
+    <div class="who">
+      <input id="me-name" type="hidden">
+      <input id="me-team" type="hidden">
+      <div class="rolesel" id="me-role">
+        <button data-role="coach" class="on">Coach</button>
+        <button data-role="director">Director</button>
+      </div>
+    </div>
+    <nav class="nav" aria-label="Studio workflow">
+      <button class="navbtn" data-view="home"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M9.5 20v-6h5v6"/></svg><span>Home</span></button>
+      <div class="navlbl cap">Build</div>
+      <button class="navbtn on" data-view="session"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M7 9h10M7 13h7M7 17h4"/></svg><span>Session Builder</span></button>
+      <button class="navbtn" data-view="board"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16M3 12h18"/><circle cx="7.5" cy="8" r="1.3" fill="currentColor" stroke="none"/><circle cx="16.5" cy="15" r="1.3" fill="currentColor" stroke="none"/></svg><span>Drill Designer</span></button>
+      <button class="navbtn" data-view="library"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5v14M4 6a2 2 0 0 1 2-2h5v16H6a2 2 0 0 0-2 2M20 6a2 2 0 0 0-2-2h-5v16h5a2 2 0 0 1 2 2"/></svg><span>Drill Library</span></button>
+      <button class="navbtn" data-view="drawer"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v5H4zM4 10h16v9H4zM9 14h6"/><path d="M7 3h10v2H7z"/></svg><span>Tactical Drawer</span></button>
+      <button class="navbtn" data-view="skill"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></svg><span>Skill Builder</span></button>
+      <div class="navlbl cap">Plan</div>
+      <button class="navbtn" data-view="week"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M7 13h4M7 17h7"/></svg><span>Week Planner</span></button>
+      <button class="navbtn" data-view="plan"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/><path d="M7 13h3M13 13h4M7 17h3M13 17h4"/></svg><span>Development Blocks</span></button>
+      <button class="navbtn" data-view="calendar"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg><span>Team Calendar</span></button>
+      <button class="navbtn" data-view="matchday"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5M9 2h6M12 5V2"/></svg><span>Match Day</span></button>
+      <div class="navlbl cap">Analyze</div>
+      <button class="navbtn" id="nav-intel" hidden data-view="intel"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><rect x="7" y="11" width="3" height="6"/><rect x="12" y="7" width="3" height="10"/><rect x="17" y="13" width="3" height="4"/></svg><span>Team Intelligence</span></button>
+      <button class="navbtn" data-view="findings"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16M4 10h16M4 15h10"/><circle cx="18" cy="17" r="3.2"/><path d="M20.4 19.4 22 21"/></svg><span>Findings</span></button>
+      <button class="navbtn" data-view="playerdev"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.3 3.1-6 7-6s7 2.7 7 6"/></svg><span>Players</span></button>
+      <button class="navbtn" data-view="standards"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 21l-4.9-2.8.9-5.5-4-3.9 5.5-.8L12 3Z"/></svg><span>Team Standards</span></button>
+      <div class="navlbl cap">Learn &amp; Develop</div>
+      <button class="navbtn" data-view="academy"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 2 8l10 5 8-4v6"/><path d="M6 10.5V15c0 1.4 2.7 3 6 3s6-1.6 6-3v-4.5"/></svg><span>Coach Resources</span></button>
+      <button class="navbtn" data-view="observe"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 3v4h8V3M8 12h.01M8 16h.01M11.5 12H16M11.5 16H16"/></svg><span>Coach Observation</span></button>
+      <button class="navbtn" data-view="methodology"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H20"/><path d="M9 7h7M9 10.5h5"/></svg><span>Methodology</span></button>
+      <div class="navlbl cap" id="nav-director-lbl" hidden>Director</div>
+      <button class="navbtn" id="nav-club" hidden data-view="club"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg><span>Director Board</span></button>
+      <button class="navbtn" data-view="learning" hidden><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5.5A3.5 3.5 0 0 1 7.5 2H12v18H7.5A3.5 3.5 0 0 0 4 23V5.5ZM20 5.5A3.5 3.5 0 0 0 16.5 2H12v18h4.5A3.5 3.5 0 0 1 20 23V5.5Z"/><path d="m8.5 8 2.5 1.6-2.5 1.6V8Z"/></svg><span>Learning Hub</span></button>
+      <div class="navlbl cap">Admin</div>
+      <button class="navbtn" data-view="settings"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.83 2.83-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.1V21H9.6v-.09A1.7 1.7 0 0 0 8.5 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.83-2.83.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1.1-.4H3V9.6h.09A1.7 1.7 0 0 0 4.6 8.5a1.7 1.7 0 0 0-.34-1.88l-.06-.06 2.83-2.83.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1.1V3h4v.09A1.7 1.7 0 0 0 15.5 4.6a1.7 1.7 0 0 0 1.88-.34l.06-.06 2.83 2.83-.06.06A1.7 1.7 0 0 0 19.4 9c.15.37.37.7.66.97.29.27.67.42 1.06.43H21v4h-.09A1.7 1.7 0 0 0 19.4 15Z"/></svg><span>Settings Hub</span></button>
+    </nav>
+    <div class="rail-scroll">
+      <div class="navlbl cap" id="rail-list-lbl">This Week</div>
+      <div id="rail-list"></div>
+    </div>
+    <div class="rail-foot cap" id="rail-foot"><span class="dot"></span><b>Cloud</b> · syncing to your account</div>
+  </aside>
+
+  <!-- STAGE -->
+  <main class="stage">
+
+    <!-- ============ GLOBAL APP BAR ============ -->
+    <header class="appbar">
+      <div class="appbar-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="appbar-search-in" type="text" placeholder="Search players, teams, drills…" aria-label="Search" autocomplete="off">
+      </div>
+      <div class="appbar-right">
+        <button class="appbar-chip" id="appbar-team" type="button" aria-haspopup="true"><span class="dot"></span><b id="appbar-team-name">Your team</b><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+        <button class="appbar-icon" id="appbar-bell" type="button" aria-label="Notifications"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="badge" id="appbar-bell-badge" hidden>0</span></button>
+        <button class="appbar-avatar" id="appbar-avatar" type="button" aria-haspopup="true"><span class="av" id="appbar-av-ini">MC</span><b id="appbar-av-role">Coach</b><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      </div>
+      <div class="appbar-pop" id="appbar-teampop" role="menu"><div class="mi-head">Switch team</div><div id="appbar-team-list"></div></div>
+      <div class="appbar-pop" id="appbar-bellpop" role="menu"><div class="mi-head">Notifications</div><div id="appbar-bell-list"></div></div>
+      <div class="appbar-pop" id="appbar-menu" role="menu">
+        <div class="role-row"><button type="button" data-role="coach" class="on">Coach</button><button type="button" data-role="director">Director</button></div>
+        <div class="sep"></div>
+        <button class="mi" id="am-howitworks" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>How it works</button>
+        <button class="mi" id="am-methodkey" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 14a5 5 0 1 1 4.9-6H21l-2 2 2 2-3 3-2-2-1.1 1.1A5 5 0 0 1 7 14Z"/><circle cx="7" cy="14" r="1.2" fill="currentColor" stroke="none"/></svg>Method Key</button>
+        <button class="mi" id="am-curriculum" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H20"/></svg>Curriculum</button>
+        <button class="mi" id="am-voice" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>Record voice note</button>
+        <div class="sep"></div>
+        <button class="mi" id="am-feedback" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Give feedback</button>
+        <button class="mi" id="am-settings" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 13a1.7 1.7 0 0 0 .3 1.9l.1.1-2 2-.1-.1a1.7 1.7 0 0 0-2.9 1.2V21H12v-2a1.7 1.7 0 0 0-2.9-1.2l-.1.1-2-2 .1-.1A1.7 1.7 0 0 0 4 13H2v-2h2a1.7 1.7 0 0 0 1.2-2.9l-.1-.1 2-2 .1.1A1.7 1.7 0 0 0 10 4V2h2v2a1.7 1.7 0 0 0 2.9 1.2l.1-.1 2 2-.1.1A1.7 1.7 0 0 0 20 11h2v2z"/></svg>Settings</button>
+      </div>
+    </header>
+    <script src="js/appbar.js"></script>
+
+    <!-- ============ WEEK PLAN ============ -->
+    <!-- ============ DASHBOARD (HOME) ============ -->
+    <section class="view" data-view="home">
+      <div class="scrollwrap"><div class="sheet"><div id="home-root"></div></div></div>
+    </section>
+
+    <section class="view" data-view="methodology" hidden>
+      <div class="scrollwrap"><div class="sheet"><div id="methodology-root"></div></div></div>
+    </section>
+
+    <section class="view" data-view="findings" hidden>
+      <div class="topbar pagehdr">
+        <div class="pagehdr-t"><div class="pg-title">Findings</div><div class="pg-sub">Turn evidence into clear training priorities</div></div>
+      </div>
+      <div class="scrollwrap"><div class="sheet"><div id="findings-root"></div></div></div>
+    </section>
+
+    <!-- ============ MATCH DAY ============ -->
+    <section class="view" data-view="matchday" hidden>
+      <div class="scrollwrap"><div class="sheet"><div class="md-wrap">
+        <div class="md-head">
+          <div class="md-head-text">
+            <div class="md-kick">Match Day · Game Day</div>
+            <h2>Match Day</h2>
+            <p>Run your halftime read, drop a quick post-match voice note, then turn it into a debrief you can carry straight into training.</p>
+          </div>
+          <div class="md-head-actions">
+            <button id="md-mic-btn" class="md-mic-mini" type="button" aria-label="Record post-match voice note" data-tooltip="Record a post-match voice note — tap to start, tap again to stop">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+            </button>
+            <button class="heading-help md-head-help" type="button" aria-label="About Match Day" data-tooltip="Your game-day companion: set the match & result, run a fast halftime read, drop a post-match voice note (the mic here), and turn it into a debrief that flows into the Week Builder. Everything saves on this device.">i</button>
+          </div>
+        </div>
+        <div id="md-rec-bar" class="md-rec-bar" hidden></div>
+        <div id="md-prematch"></div>
+
+        <div class="md-card">
+          <div class="md-ch"><span class="p">MATCH</span><span class="t">This match</span><button class="heading-help" type="button" aria-label="This match help" data-tooltip="Set who you're playing and the result, then Save match day to keep a history of every match you can look back on.">i</button></div>
+          <div class="md-body">
+            <div class="md-ctx">
+              <div class="md-fld md-fld-wide"><label class="md-lbl2" for="md-opp">Opponent</label><input class="md-in2" id="md-opp" placeholder="e.g. Houston Dynamo"></div>
+              <div class="md-fld"><label class="md-lbl2" for="md-venue">Venue</label><select class="md-in2" id="md-venue"><option value="">—</option><option>Home</option><option>Away</option><option>Neutral</option></select></div>
+              <div class="md-fld"><label class="md-lbl2" for="md-date">Date</label><input class="md-in2" id="md-date" type="date"></div>
+              <div class="md-fld md-fld-score"><label class="md-lbl2">Score</label><div class="md-score"><input id="md-score-us" type="number" min="0" inputmode="numeric" placeholder="Us"><span class="md-dash">–</span><input id="md-score-them" type="number" min="0" inputmode="numeric" placeholder="Opp"><span class="md-result" id="md-result"></span></div></div>
+            </div>
+            <div class="md-row"><button class="md-btn gold" id="md-save-match" type="button">Save match day</button><button class="md-btn" id="md-new-match" type="button">＋ New match day</button></div>
+          </div>
+        </div>
+
+        <div class="md-card">
+          <div class="md-ch"><span class="p">HT</span><span class="t">Halftime — are we living our model?</span><button class="heading-help" type="button" aria-label="Halftime help" data-tooltip="A fast read at the break: tick what you're seeing, note what to exploit and address, and set one focus phrase for the players. Open 'Full P1–P6 read' for the deeper checklist.">i</button></div>
+          <div class="md-body">
+            <div class="md-cb"><input type="checkbox" id="md-h1"><label for="md-h1">Playing as a <b>collective</b> — not individuals</label></div>
+            <div class="md-cb"><input type="checkbox" id="md-h2"><label for="md-h2">Accountable to role · react when we lose it</label></div>
+            <div class="md-cb"><input type="checkbox" id="md-h3"><label for="md-h3">Getting into the box / creating chances</label></div>
+            <div class="md-cb"><input type="checkbox" id="md-h4"><label for="md-h4">Defending our box &amp; the counter together</label></div>
+            <details class="md-more">
+              <summary>Full P1–P6 read</summary>
+              <div class="md-more-in">
+                <div class="md-more-grp"><div class="md-lbl" style="color:var(--gold,#c9971a)">In possession · P1 · P2</div>
+                  <div class="md-cb"><input type="checkbox" id="md-h5"><label for="md-h5">Building out under pressure without panic</label></div>
+                  <div class="md-cb"><input type="checkbox" id="md-h6"><label for="md-h6">Breaking lines / finding the free man</label></div>
+                </div>
+                <div class="md-more-grp"><div class="md-lbl" style="color:var(--blue,#1f6da6)">Out of possession · P3 · P4</div>
+                  <div class="md-cb"><input type="checkbox" id="md-h7"><label for="md-h7">Press triggers clear &amp; we press together</label></div>
+                  <div class="md-cb"><input type="checkbox" id="md-h8"><label for="md-h8">Compact &amp; protecting our box</label></div>
+                </div>
+                <div class="md-more-grp"><div class="md-lbl" style="color:var(--green,#2f8f57)">Transitions · P5 · P6</div>
+                  <div class="md-cb"><input type="checkbox" id="md-h9"><label for="md-h9">React fast when we win it — support the ball</label></div>
+                  <div class="md-cb"><input type="checkbox" id="md-h10"><label for="md-h10">Protect the next moment when we lose it</label></div>
+                </div>
+                <div class="md-more-grp"><div class="md-lbl">Opponent read</div>
+                  <input class="md-in" id="md-opp-threat" placeholder="Their main threat…">
+                  <input class="md-in" id="md-opp-space" placeholder="Where we can hurt them…">
+                </div>
+              </div>
+            </details>
+            <div class="md-grid">
+              <div><div class="md-lbl" style="color:var(--good,#1f7a43)">Exploit — 2nd half</div>
+                <input class="md-in md-ex" placeholder="Advantage to press home…">
+                <input class="md-in md-ex" placeholder="…">
+              </div>
+              <div><div class="md-lbl" style="color:#c0392b">Address → feeds training</div>
+                <input class="md-in md-ad" placeholder="Issue to fix…">
+                <input class="md-in md-ad" placeholder="…">
+                <input class="md-in md-ad" placeholder="…">
+              </div>
+            </div>
+          </div>
+          <div class="md-focus"><span class="fl">★ Focus phrase</span><input id="md-focus" placeholder="One line for the players at halftime…"></div>
+        </div>
+
+        <div class="md-card">
+          <div class="md-ch"><span class="p">DEBRIEF</span><span class="t">Debrief notes</span><button class="heading-help" type="button" aria-label="Debrief help" data-tooltip="Turn what you saw into next steps. Pull in your halftime notes, add your read, then send it to the Week Builder where it shows up as a note for the week.">i</button></div>
+          <div class="md-body">
+            <textarea class="md-ta" id="md-debrief" placeholder="What did you see? What worked, what cost us, and what we take into training…"></textarea>
+            <div class="md-row">
+              <button class="md-btn" id="md-pull" type="button">↧ Pull from halftime</button>
+              <button class="md-btn" id="md-copy" type="button">⧉ Copy notes</button>
+              <button class="md-btn gold" id="md-send-training" type="button">→ Send to Week Builder</button>
+            </div>
+            <div class="md-note">Sends your focus, the "Address" items and this debrief into the Week Builder as a note for the week.</div>
+          </div>
+        </div>
+
+        <div class="md-card">
+          <div class="md-ch"><span class="p">FINDING</span><span class="t">Turn it into a Finding</span><button class="heading-help" type="button" aria-label="Finding help" data-tooltip="A Finding is a confirmed football problem — not just a note. Add the evidence and how sure you are, link it to an Aspire principle, then send it to the week as a need. No retyping.">i</button></div>
+          <div class="md-body">
+            <div class="md-note" style="margin:0 0 10px">The debrief captures what you saw. A <b>Finding</b> turns one football problem into something the week can act on — with evidence, confidence and priority.</div>
+            <label class="md-lbl2" for="mf-problem">The football problem</label>
+            <textarea class="md-ta" id="mf-problem" style="min-height:64px" placeholder="e.g. We lose it building out under the first press."></textarea>
+            <label class="md-lbl2" for="mf-evidence" style="margin-top:9px;display:block">Evidence — what told you this?</label>
+            <input class="md-in2" id="mf-evidence" placeholder="e.g. turned it over 4+ times in our half; two goals came from it">
+            <div class="fnd-grp"><span class="cap">Game moment — where did it happen?</span><div id="mf-moment"><button type="button" class="fnd-pill" data-mf-moment="IP — in possession">In possession</button><button type="button" class="fnd-pill" data-mf-moment="OP — out of possession">Out of possession</button><button type="button" class="fnd-pill" data-mf-moment="OP→IP — win it">Transition · win it</button><button type="button" class="fnd-pill" data-mf-moment="IP→OP — lose it">Transition · lose it</button></div></div>
+            <div class="fnd-grp"><span class="cap">Aspire connection — link a principle (up to 3)</span><div id="mf-prins"><button type="button" class="fnd-pill" data-mf-prin="P1 Create Superiority">P1 Create Superiority</button><button type="button" class="fnd-pill" data-mf-prin="P2 Control Through Structure">P2 Control Through Structure</button><button type="button" class="fnd-pill" data-mf-prin="P3 Verticality with Intention">P3 Verticality with Intention</button><button type="button" class="fnd-pill" data-mf-prin="P4 Proactive Pressure">P4 Proactive Pressure</button><button type="button" class="fnd-pill" data-mf-prin="P5 Dominate the Boxes">P5 Dominate the Boxes</button><button type="button" class="fnd-pill" data-mf-prin="P6 Emotional Control">P6 Emotional Control</button></div></div>
+            <div class="fnd-row"><div class="fnd-grp"><span class="cap">Confidence</span><div id="mf-conf"><button type="button" class="fnd-pill on" data-mf-conf="Your eye">Your eye</button><button type="button" class="fnd-pill" data-mf-conf="Eye + data">Eye + data</button><button type="button" class="fnd-pill" data-mf-conf="Eye + data + video">+ video</button></div></div><div class="fnd-grp"><span class="cap">Priority</span><div id="mf-prio"><button type="button" class="fnd-pill" data-mf-prio="Low">Low</button><button type="button" class="fnd-pill on" data-mf-prio="Medium">Medium</button><button type="button" class="fnd-pill" data-mf-prio="High">High</button></div></div><div class="fnd-grp"><span class="cap">Status</span><div id="mf-status"><button type="button" class="fnd-pill on" data-mf-status="Open">Open</button><button type="button" class="fnd-pill" data-mf-status="Watching">Watching</button><button type="button" class="fnd-pill" data-mf-status="Confirmed">Confirmed</button></div></div></div>
+            <div class="md-row" style="margin-top:12px"><button class="md-btn gold" id="mf-send" type="button">Confirm &amp; send to week →</button><button class="md-btn" id="mf-save" type="button">Save finding</button><span id="mf-log" style="color:var(--muted,#6f655b);font-size:12.5px;align-self:center"></span></div>
+          </div>
+        </div>
+
+        <div class="md-card">
+          <div class="md-ch"><span class="p">SAVED</span><span class="t">Past match days</span><button class="heading-help" type="button" aria-label="History help" data-tooltip="Every match day you save shows here — open one to review it, or remove it.">i</button></div>
+          <div class="md-body"><div id="md-history"></div></div>
+        </div>
+      </div></div></div>
+    </section>
+
+    <!-- ============ TEAM CALENDAR ============ -->
+    <section class="view" data-view="calendar" hidden>
+      <div class="topbar pagehdr">
+        <div class="pagehdr-t"><div class="pg-title">Team Calendar</div><div class="pg-sub">Schedule · Development Blocks · Training · Matches</div></div>
+        <span class="topbar-spacer" style="flex:1"></span>
+        <div class="cal-nav">
+          <span class="cal-title" id="cal-title">—</span>
+          <button class="btn sm" id="cal-today" type="button">Today</button>
+          <button class="btn sm cal-arrow" id="cal-prev" type="button" aria-label="Previous month">←</button>
+          <button class="btn sm cal-arrow" id="cal-next" type="button" aria-label="Next month">→</button>
+          <button class="btn gold sm" id="cal-add" type="button">+ Add event</button>
+        </div>
+      </div>
+      <div class="scrollwrap"><div class="sheet">
+        <div class="cal-tabs">
+          <button class="cal-tab on" data-caltab="calendar" type="button">Calendar</button>
+          <button class="cal-tab" data-caltab="blocks" type="button">Development Blocks</button>
+          <button class="cal-tab" data-caltab="list" type="button">List View</button>
+          <button class="cal-tab" data-caltab="overview" type="button">Team Overview</button>
+        </div>
+        <div id="cal-blockstrip"></div>
+        <div id="cal-root"></div>
+      </div></div>
+    </section>
+
+    <section class="view" data-view="plan" hidden>
+      <div class="topbar pagehdr">
+        <div class="pagehdr-t"><div class="pg-title">Development Block Planner</div><div class="pg-sub">Set the direction for the next 3–6 weeks. Focus, develop, and connect to competition.</div></div>
+        <span class="topbar-spacer" style="flex:1"></span>
+        <button class="btn sm" id="blk-reset" type="button">+ New block</button>
+        <button class="btn gold sm" id="blk-open-week" type="button">Open Week Builder</button>
+      </div>
+      <div class="scrollwrap">
+        <div class="sheet">
+          <div class="block-planner" id="plan-body"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" data-view="skill" hidden>
+      <div class="topbar">
+        <input class="title-in" id="skill-topbar-title" aria-label="Skill Builder" value="Skill Builder" readonly>
+        <span class="workflow-status">Individual development</span>
+        <button class="btn sm" id="skill-lib-link" type="button">Open Drill Library</button>
+      </div>
+      <div class="scrollwrap">
+        <div class="sheet">
+          <div class="skill-lab" id="skill-body"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" data-view="week" hidden>
+      <div class="topbar pagehdr">
+        <div class="pagehdr-t"><div class="pg-title">Week Planner</div><div class="pg-sub">Turn your game problem into a clear, purposeful training week.</div></div>
+        <input class="title-in wk-weekchip" id="wk-title" aria-label="Selected week" placeholder="Week of Sept 7–13, 2026" value="Week of Sept 7–13, 2026" readonly>
+        <span class="topbar-spacer" style="flex:1"></span>
+        <span class="workflow-status" id="wk-status">Weekly plan</span>
+        <div class="plan-mode-toggle" id="wk-planmode" role="group" aria-label="Plan detail"><button type="button" data-pm="quick" class="on">Quick Plan</button><button type="button" data-pm="advanced">Advanced</button></div>
+        <button class="btn sm wk-adv" id="wk-standard">Use AFC curriculum</button>
+        <button class="btn gold sm" id="wk-publish">Publish week to Club</button>
+      </div>
+      <div class="scrollwrap">
+        <div class="sheet week-flow-sheet">
+          <div id="wk-carry-note" class="wk-carry-note" hidden></div>
+          <div class="week-stepper-shell">
+            <div class="week-stepper" id="wk-stepper" aria-label="Week planning steps" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+              <button type="button" data-week-step="1"><i>1</i><span><b>Set the week</b><small>Team &amp; schedule</small></span></button>
+              <button type="button" data-week-step="2"><i>2</i><span><b>Football focus</b><small>Problem &amp; outcome</small></span></button>
+              <button type="button" data-week-step="3"><i>3</i><span><b>Build the week</b><small>Plan &amp; review</small></span></button>
+            </div>
+            <div class="week-progress" id="wk-progress">Start with the team and match schedule.</div>
+          </div>
+
+          <div class="blk weekly-setup week-step-panel" data-week-panel="1">
+            <div class="set-week-layout">
+              <div class="step-heading set-week-heading"><span class="step-kicker">Step 1</span><div class="set-week-title-row"><h3>Set the week</h3><button class="heading-help" type="button" aria-label="Set the week help" data-tooltip="Set the dates, weekend match days and Monday–Friday training schedule. The active working team is applied automatically.">i</button></div><p>Team, match and training schedule</p></div>
+              <div class="wk-context-grid">
+                <div class="field week-date-field"><label class="cap" for="wk-start">Week begins</label><div class="week-nav"><button type="button" id="wk-prev" aria-label="Previous week">←</button><input id="wk-start" type="date"><button type="button" id="wk-next" aria-label="Next week">→</button><button type="button" id="wk-current">This week</button></div></div>
+                <div class="field week-team-field"><label class="cap" for="wk-team">Working team</label><div class="team-context-control"><input id="wk-team" placeholder="Select a team" readonly><button type="button" id="wk-team-switch" aria-label="Switch working team">Switch</button></div><datalist id="wk-team-options"></datalist></div>
+                <div class="field"><label class="cap" for="wk-format">Format</label><select id="wk-format"><option>5v5</option><option>7v7</option><option>9v9</option><option selected>11v11</option></select></div>
+                <div class="field"><label class="cap">Match days</label><div class="segrow" id="wk-match"></div></div>
+                <div class="field"><label class="cap">Training · Mon–Fri</label><div class="chips" id="wk-days-pick"></div></div>
+                <div class="field wk-direction-field"><label class="cap">Planning direction</label><div class="plan-path-toggle authority-toggle" id="wk-mode"><button type="button" data-mode="assigned">Club assigned</button><button type="button" data-mode="guided">Club guided</button><button type="button" data-mode="coach">Coach planned</button></div><div class="authority-note authority-note-inline" id="wk-authority-note"></div></div>
+              </div>
+            </div>
+            <div class="set-week-crosslink"><button type="button" class="set-week-crosslink-btn" data-hgo="plan"><span class="swx-ic" aria-hidden="true">◱</span><span class="swx-copy">Planning several weeks at once? <b>Open Development Blocks</b> — give the block its shape, then send each week here to build.</span><span class="swx-arrow" aria-hidden="true">→</span></button></div>
+          </div>
+
+          <div class="blk week-step-panel gm-spine-panel" data-week-panel="2" hidden>
+            <div class="gm-spine" id="wk-gmspine"></div>
+          </div>
+          <div class="blk week-step-panel football-focus-card wk-focus-detail legacy-focus" data-week-panel="2" hidden>
+            <div class="football-focus-layout">
+              <div class="step-heading focus-step-heading"><span class="step-kicker">Step 2</span><div class="focus-title-row"><h3>Football focus</h3><button class="heading-help" type="button" aria-label="Football focus help" data-tooltip="Define the game problem and the observable outcome for the week. Each training day can still have its own objective.">i</button></div><p>Set the week’s coaching direction</p></div>
+              <div class="focus-builder">
+                <div class="curriculum-picker wk-adv" id="wk-guided-wrap">
+                  <div class="field"><label class="cap" for="wk-curriculum">AFC curriculum week</label><select id="wk-curriculum"></select></div>
+                  <div class="curriculum-preview" id="wk-curriculum-preview"></div>
+                </div>
+                <div class="game-problem-builder" id="wk-problem-builder">
+                  <div class="focus-moments-grid">
+                    <div class="field"><label class="cap">Primary moment</label><div class="moment-paths" id="wk-primary-moment"></div></div>
+                    <div class="field wk-adv"><label class="cap">Supporting moments <span class="optional-label">Optional</span></label><div class="chips supporting-moments" id="wk-supporting-moments"></div></div>
+                  </div>
+                  <p class="wk-quick-note">Quick Plan keeps it to the main football problem and the week outcome. Aspire still tags principles, concepts and evidence behind the scenes — switch to <b>Advanced</b> for full controls.</p>
+                  <div class="field wk-principles-field wk-adv"><label class="cap">Club principles · P1–P6 <span class="optional-label">Up to 3 · defaults from the situation, change any</span></label><div class="chips principle-pick" id="wk-principles-pick"></div></div>
+                  <details class="focus-advanced wk-adv">
+                    <summary><span class="fa-title">Advanced</span><span class="fa-hint">Phase &amp; situation</span></summary>
+                    <div class="problem-selects">
+                      <div class="field"><label class="cap" for="wk-phase">Phase</label><select id="wk-phase"></select></div>
+                      <div class="field"><label class="cap" for="wk-subphase">Situation</label><select id="wk-subphase"></select></div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="blk week-step-panel focus-outcome-panel wk-focus-detail legacy-focus" data-week-panel="2" hidden>
+            <div class="step-heading"><span class="step-kicker">Outcome &amp; behaviors</span><h3>What should improve?</h3><button class="heading-help" type="button" aria-label="Outcome and behaviors help" data-tooltip="Describe the observable improvement you want by the end of the week. This guides sessions without restricting the coach.">i</button></div>
+            <p class="focus-derived-note" id="wk-derived-note" hidden></p>
+            <div class="field"><label class="cap" for="wk-outcome">By the end of the week, players will...</label><textarea id="wk-outcome" placeholder="e.g. Recognize the free player and progress through pressure with control."></textarea></div>
+            <div class="outcome-primary"><div class="field"><label class="cap" for="wk-primary-habit">Primary emphasis</label><select id="wk-primary-habit"></select></div></div>
+            <details class="supporting-improvements wk-adv" id="wk-supporting"><summary>Supporting improvements <span id="wk-supporting-count">0 selected</span></summary><div class="supporting-body">
+              <div class="sup-group"><label class="cap">Transition habit</label><div class="chips" id="wk-transition-chips"></div></div>
+              <div class="sup-group"><label class="cap">Universal concept</label><div class="chips" id="wk-universal-chips"></div></div>
+              <div class="sup-group"><label class="cap">Role concept</label><div class="chips" id="wk-role-chips"></div></div>
+              <div class="sup-group"><label class="cap">Final third focus <span class="optional-label">Optional · when the week reaches the final third</span></label><select id="wk-finalthird" class="sup-select"><option value="">— none —</option></select></div>
+            </div></details>
+            <!-- Club principles (P1–P6) chooser moved up to the Football-focus card in Step 2 -->
+          </div>
+
+          <div class="blk week-step-panel gm-spine-panel" data-week-panel="2" hidden>
+            <div class="microcycle-map" id="wk-microcycle"></div>
+          </div>
+
+          <div class="blk week-step-panel" data-week-panel="3" hidden>
+            <div class="step-heading calendar-step-heading"><span class="step-kicker">Step 3</span><h3>Build the week</h3><button class="heading-help" type="button" aria-label="Training days help" data-tooltip="Give each selected practice its own purpose, then build the session while keeping it connected to the weekly focus.">i</button><div class="step-heading-actions"><select id="wk-stage" class="btn sm" title="Development stage for this team"><option value="">Stage: set</option><option value="Foundation">Foundation</option><option value="Emerging">Emerging</option><option value="Formation">Formation</option><option value="Performance">Performance</option></select><select id="wk-foundation" class="btn sm" title="Pull this week from the Foundation Curriculum (younger groups)"><option value="">Foundation: off</option><option value="1">Foundation Wk 1</option><option value="2">Foundation Wk 2</option><option value="3">Foundation Wk 3</option><option value="4">Foundation Wk 4</option><option value="5">Foundation Wk 5</option><option value="6">Foundation Wk 6</option><option value="7">Foundation Wk 7</option><option value="8">Foundation Wk 8</option><option value="9">Foundation Wk 9</option><option value="10">Foundation Wk 10</option><option value="11">Foundation Wk 11</option><option value="12">Foundation Wk 12</option><option value="13">Foundation Wk 13</option><option value="14">Foundation Wk 14</option></select><button class="btn sm" id="wk-edit-days" type="button">Edit training days</button><button class="btn gold sm" id="wk-view-complete" type="button">Publish week</button></div></div>
+            <div class="session-path" id="wk-session-path"></div>
+            <div class="build-week-list" id="wk-build"></div>
+            <details class="daily-intent-shell" hidden><summary><span>Daily Session Map</span><small>Give each day its own purpose while keeping it connected to the week.</small></summary><div class="daily-intent-map" id="wk-day-intents"></div></details>
+            <div class="week-calendar-grid" id="wk-days" hidden></div>
+          </div>
+
+          <div class="week-flow-actions">
+            <button class="btn" id="wk-back" type="button">← Back</button>
+            <span id="wk-step-help">Complete the team and schedule.</span>
+            <button class="btn gold" id="wk-continue" type="button">Continue →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SESSION ============ -->
+    <section class="view" data-view="session" hidden>
+      <div class="topbar pagehdr">
+        <button class="btn sm planner-back" id="sess-back-week" type="button">← Build the week</button>
+        <div class="pagehdr-t"><div class="pg-title">Session Builder</div><div class="pg-sub">Design a focused, purposeful session using your Week DNA.</div></div>
+        <input class="title-in wk-weekchip" id="sess-title" placeholder="Session title">
+        <span class="topbar-spacer" style="flex:1"></span>
+        <button class="btn sm sess-new-btn" id="sess-new" type="button" title="Start a fresh session">+ New Session</button>
+        <button class="btn sm" id="sess-newdrill" type="button" title="Design a new drill in the Drill Designer">+ New Drill</button>
+        <span class="workflow-status" id="sess-progress-meta">Session draft</span>
+        <div class="sess-more-wrap">
+          <button class="btn sm" id="sess-more-btn" type="button" aria-haspopup="menu" aria-expanded="false">⋯ More</button>
+          <div class="sess-more-menu" id="sess-more-menu" role="menu" hidden>
+            <button class="btn sm" id="sess-tools" type="button" role="menuitem">Manage blocks</button>
+            <button class="btn sm session-record-btn" id="sess-record" type="button" role="menuitem">Record delivery</button>
+          </div>
+        </div>
+        <button class="btn sm" id="sess-save">Save to My Sessions</button>
+        <button class="btn gold sm" id="sess-publish">Publish to Club</button>
+      </div>
+      <div class="scrollwrap">
+        <div class="sheet sb-sheet">
+          <div class="sess-weekdna sb-weekdna-top" id="sess-weekdna" hidden></div>
+          <div class="blk session-brief sb-brief-compact">
+            <div class="sb-context">
+              <span class="sb-chip"><span class="sb-chip-l">Day</span><b id="sess-brief-date">Custom session</b></span>
+              <span class="sb-chip"><span class="sb-chip-l">Match cycle</span><b id="sess-brief-md">MD-4</b></span>
+              <span class="sb-chip"><span class="sb-chip-l">Load</span><b id="sess-brief-fit">Tension</b></span>
+              <span class="sb-chip ghost"><b id="sess-brief-progress">0 blocks</b></span>
+              <span class="sb-team">Working with <b id="sess-team-context">Team not set</b></span>
+              <span class="sb-space"></span>
+              <button class="btn sm" id="sess-adjust" type="button" aria-expanded="false" aria-controls="sess-more">More details</button>
+            </div>
+            <input id="sess-team" type="hidden">
+          </div>
+          <div class="sb-trio">
+            <div class="sb-tcard sb-tcard-obj">
+              <div class="sb-obj">
+                <span class="sb-obj-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="8.2"/><circle cx="12" cy="12" r="3.6"/><circle cx="12" cy="12" r="0.9" fill="currentColor" stroke="none"/></svg></span>
+                <div class="sb-obj-body">
+                  <label class="cap" for="sess-obj">Session Objective</label>
+                  <textarea id="sess-obj" placeholder="What should players be able to do by the end?"></textarea>
+                  <div class="ag-suggest" id="sess-obj-suggest" hidden></div>
+                </div>
+              </div>
+            </div>
+            <div class="sb-tcard sb-tcard-rel">
+              <label class="cap" for="sess-reprel">Representative Relationship <span class="sb-req">· required</span><span class="heading-help" style="width:15px;height:15px;font-size:10px;line-height:15px" title="Who must interact with whom to reproduce the football problem? e.g. #6 + two #8s vs a pressing front two.">i</span></label>
+              <input id="sess-reprel" placeholder="Who interacts with whom? e.g. CB + 6 + 8 vs mid-block midfield line">
+            </div>
+            <div class="sb-tcard sb-tcard-details">
+              <div class="sb-rail-h">Session Details</div>
+              <label class="sb-det"><span class="sb-det-l">Duration</span><input id="sess-dur" placeholder="~90 min"></label>
+              <div class="sb-det"><span class="sb-det-l">Format</span><b id="sb-det-format">—</b></div>
+              <div class="sb-det"><span class="sb-det-l">Players</span><b id="sb-det-players">Adaptable</b></div>
+            </div>
+          </div>
+          <div class="blk session-structure sb-storyboard">
+            <div class="sb-struct-head"><h3>Session Storyboard</h3><span class="sb-flow">Activate → Basic → Extended → Training Game</span></div>
+            <div class="sub">Each block is a <b>game picture</b> first — scan the session, then open a block for detail. Built from <b>repetition → realism</b>.</div>
+            <div id="ph-list" class="ph-list-grid"></div>
+            <div class="secadd" id="ph-add" aria-label="Add a session block"></div>
+          </div>
+          <div class="session-ready-bar" id="sess-ready-bar">
+            <div class="srb-status"><span class="srb-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b id="srb-title">Keep building</b><span id="srb-sub">0 blocks</span></div></div>
+            <div class="srb-actions"><button class="btn" id="srb-preview" type="button">Preview Session</button><button class="btn gold" id="srb-complete" type="button">Mark as Completed</button></div>
+          </div>
+          <details class="sb-quality" id="sb-quality">
+            <summary><span class="sb-q-ttl">Guidance &amp; details</span><span class="sb-q-sub">Aspire guidance · the 3Rs · moments &amp; principles · session settings</span></summary>
+            <div class="sb-quality-grid">
+              <div class="sb-rail-card sb-ballneed tier-coached">
+                <div class="sb-rail-h">What does the ball need?</div>
+                <p class="sb-ball"><b>In possession:</b> Attract → create the free player → progress.</p>
+                <p class="sb-ball"><b>If we lose it:</b> Press → protect → recover.</p>
+              </div>
+              <div class="sb-rail-card sb-threeR tier-support">
+                <div class="sb-rail-h">Session quality check · the 3Rs</div>
+                <details class="r3"><summary><span class="r3-k">Repetition</span><span class="r3-tag ok">High ✓</span></summary><small>Players repeatedly meet the real football problem — not isolated, unopposed reps.</small></details>
+                <details class="r3"><summary><span class="r3-k">Realism</span><span class="r3-tag ok">High ✓</span></summary><small>The practice keeps game information: opponents, direction, pressure and consequences.</small></details>
+                <details class="r3"><summary><span class="r3-k">Relevance</span><span class="r3-tag ok">High ✓</span></summary><small>It fits this team, age, format and current development need.</small></details>
+              </div>
+              <div class="sb-rail-card sb-principles tier-support">
+                <div class="sb-principles-head"><span class="cap">Principles Focus</span><span class="inherit-badge" id="sess-focus-source">Weekly suggestions available</span></div>
+                <div class="chips" id="sess-focus-summary"></div>
+              </div>
+            </div>
+            <div class="session-more" id="sess-more" hidden>
+              <div class="field session-behavior-field" style="margin-bottom:0"><label class="cap">Session behaviors</label><textarea id="sess-behaviors" placeholder="The observable behaviors coaches want to see across this practice"></textarea></div>
+              <div class="session-advanced" id="sess-advanced">
+                <div class="advanced-actions"><b>Session settings and focus</b><button class="btn sm" id="sess-reset-focus" type="button">Apply planning suggestions</button></div>
+                <div class="mdbar">
+                  <div class="mdpick" id="sess-mdpick"></div>
+                  <div class="mdinfo" id="sess-mdinfo"></div>
+                </div>
+                <div class="field"><label class="cap">Fitness sub-dynamic</label><input id="sess-fit" placeholder="Tension / Duration / Velocity"></div>
+                <div class="field"><label class="cap">Moments <span class="optional-label">Choose all that apply</span></label><div class="chips" id="sess-moments"></div></div>
+                <div class="field" style="margin-bottom:0"><label class="cap">Principles</label><div class="chips" id="sess-principles"></div></div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DRILL LIBRARY ============ -->
+    <section class="view" data-view="library" hidden>
+      <div class="topbar pagehdr">
+        <div class="pagehdr-t"><div class="pg-title">Drill Library</div><div class="pg-sub">Search, filter and use drills connected to the Aspire methodology.</div></div>
+        <span class="topbar-spacer" style="flex:1"></span>
+        <button class="btn gold sm" id="lib-add">＋ Create Drill</button>
+      </div>
+      <div class="scrollwrap">
+        <div class="libtabs" id="lib-tabs">
+          <button data-tab="aspire" class="on">Aspire Library</button>
+          <button data-tab="club">Club</button>
+          <button data-tab="mine">Mine</button>
+        </div>
+        <div class="filterbar">
+          <div class="searchwrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+            <input id="lib-search" placeholder="Search drills, cues, objectives…">
+          </div>
+          <select id="lib-phase"><option value="">All drill types</option><option value="Activation">Activation</option><option value="Basic situation">Basic</option><option value="Extended situation">Extended</option><option value="Training game">Training game</option></select>
+          <select id="lib-cat"><option value="">All categories</option></select>
+          <select id="lib-princ"><option value="">All principles</option></select>
+          <select id="lib-age"><option value="">All ages</option></select>
+          <select id="lib-moment"><option value="">All moments</option></select>
+          <select id="lib-stage"><option value="">All stages</option><option value="Foundation">Foundation</option><option value="Emerging">Emerging</option><option value="Formation">Formation</option><option value="Performance">Performance</option></select>
+          <select id="lib-format"><option value="">All formats</option><option value="5v5">5v5</option><option value="7v7">7v7</option><option value="9v9">9v9</option><option value="11v11">11v11</option></select>
+          <select id="lib-morpho"><option value="">All load (morpho)</option><option value="Strength">Strength / Tension</option><option value="Duration">Duration / Endurance</option><option value="Speed">Speed / Velocity</option></select>
+          <select id="lib-scale"><option value="">All scales</option><option value="Individual">Individual</option><option value="Group">Group</option><option value="Sectorial">Sectorial</option><option value="Inter-sect">Inter-sectorial</option><option value="Collective">Collective</option></select>
+          <select id="lib-topic"><option value="">All topics</option></select>
+        </div>
+        <div class="library-results"><span id="lib-result-meta">Showing all drills</span><button class="text-btn" id="lib-clear" type="button">Clear filters</button></div>
+        <div class="drillgrid" id="lib-grid"></div>
+      </div>
+    </section>
+
+    <!-- ============ TACTICAL DRAWER ============ -->
+    <section class="view" data-view="drawer" hidden>
+      <div class="topbar">
+        <span class="title-in" style="cursor:default">Tactical Drawer</span>
+        <span class="workflow-status" id="drawer-status">Your coaching ideas</span>
+        <button class="btn gold sm" id="drawer-add" type="button">＋ Create idea</button>
+      </div>
+      <div class="scrollwrap">
+        <div class="drawer-intro">
+          <div><span class="cap">Think · Draw · Reuse</span><h2>Your working space for football ideas</h2><p>Develop systems, training ideas, set pieces and match plans. Keep them private while they evolve, or share the finished version with the club.</p></div>
+          <button class="btn gold" id="drawer-add-hero" type="button">Open a blank board</button>
+        </div>
+        <div class="libtabs" id="drawer-tabs">
+          <button data-tab="mine" class="on">My Drawer</button>
+          <button data-tab="club">Club Ideas</button>
+        </div>
+        <div class="filterbar drawer-filters">
+          <div class="searchwrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+            <input id="drawer-search" placeholder="Search title, formation, notes or tags…">
+          </div>
+          <select id="drawer-type"><option value="">All idea types</option><option>System</option><option>Training Idea</option><option>Set Piece</option><option>Restart</option><option>Match Plan</option></select>
+          <select id="drawer-phase"><option value="">All phases</option><option>IP</option><option>OP</option><option>Transition</option><option>Set Piece</option><option>Mixed</option></select>
+        </div>
+        <div class="library-results"><span id="drawer-result-meta">0 ideas</span><button class="text-btn" id="drawer-clear" type="button">Clear filters</button></div>
+        <div class="drawer-grid" id="drawer-grid"></div>
+      </div>
+    </section>
+
+    <!-- ============ LEARNING HUB ============ -->
+    <section class="view" data-view="intel" hidden>
+      <div class="topbar pagehdr">
+        <div class="pagehdr-t"><div class="pg-title">Team Intelligence</div><div class="pg-sub">Data · Video · Observations · Findings</div></div>
+        <span class="topbar-spacer" style="flex:1"></span>
+        <span class="workflow-status" id="intel-src">Step Out · match data</span>
+      </div>
+      <div class="scrollwrap">
+        <div class="cc-tabs" id="intel-tabs">
+          <button class="cc-tab on" data-itab="overview" type="button">Overview</button>
+          <button class="cc-tab" data-itab="reports" type="button">Match Reports</button>
+          <button class="cc-tab" data-itab="trends" type="button">Trends</button>
+          <button class="cc-tab" data-itab="video" type="button">Video Moments</button>
+          <button class="cc-tab" data-itab="players" type="button">Player Development</button>
+        </div>
+        <div id="coach-finding" style="border:1px solid #e3ddd0;border-left:4px solid var(--gold,#b8860b);border-radius:12px;background:var(--panel,#fff);padding:15px 17px;margin-bottom:14px"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><div><span class="cap" style="color:var(--gold-deep,#8a6a1f)">Match finding · Coach observation</span><h3 style="margin:2px 0 0;font-family:Barlow Condensed;font-size:19px">Log what you saw</h3></div><span style="font-family:Barlow Condensed;text-transform:uppercase;letter-spacing:.05em;font-size:11px;font-weight:700;background:#eef3f7;color:#3a6b8c;padding:3px 9px;border-radius:6px" id="cf-conf-badge">Confidence: your eye</span></div><p style="color:var(--muted,#6f655b);font-size:13px;margin:7px 0 10px">Write the one football problem you saw, and the evidence behind it. Step Out and video only raise the confidence — the coach confirms the finding.</p><label class="cap" style="display:block;margin-bottom:4px">What did you see? (the football problem)</label><textarea id="cf-problem" rows="2" style="width:100%;border:1px solid #e3ddd0;border-radius:8px;padding:8px;font:inherit;resize:vertical" placeholder="e.g. Progression breaks down under first pressure — we lose it building out."></textarea><label class="cap" style="display:block;margin:9px 0 4px">Evidence — what told you this?</label><input id="cf-evidence" type="text" style="width:100%;border:1px solid #e3ddd0;border-radius:8px;padding:8px;font:inherit" placeholder="e.g. lost it building out 4+ times; Step Out 61% completion in our half"><label class="cap" style="display:block;margin:9px 0 4px">Desired behavior (optional)</label><input id="cf-behavior" type="text" style="width:100%;border:1px solid #e3ddd0;border-radius:8px;padding:8px;font:inherit" placeholder="e.g. Receive on the back foot and play forward through the free man."><label class="cap" style="display:block;margin:9px 0 4px">Link to a principle (optional, up to 3)</label><div id="cf-prins" style="display:flex;flex-wrap:wrap;gap:6px"><button type="button" class="cf-chip" data-cf-prin="P1 Create Superiority" style="border:1px solid #e3ddd0;border-radius:999px;background:#f6f2e9;padding:4px 11px;font-size:12px;font-weight:600;color:#6f655b;cursor:pointer">P1 Create Superiority</button><button type="button" class="cf-chip" data-cf-prin="P2 Control Through Structure" style="border:1px solid #e3ddd0;border-radius:999px;background:#f6f2e9;padding:4px 11px;font-size:12px;font-weight:600;color:#6f655b;cursor:pointer">P2 Control Through Structure</button><button type="button" class="cf-chip" data-cf-prin="P3 Verticality with Intention" style="border:1px solid #e3ddd0;border-radius:999px;background:#f6f2e9;padding:4px 11px;font-size:12px;font-weight:600;color:#6f655b;cursor:pointer">P3 Verticality with Intention</button><button type="button" class="cf-chip" data-cf-prin="P4 Proactive Pressure" style="border:1px solid #e3ddd0;border-radius:999px;background:#f6f2e9;padding:4px 11px;font-size:12px;font-weight:600;color:#6f655b;cursor:pointer">P4 Proactive Pressure</button><button type="button" class="cf-chip" data-cf-prin="P5 Dominate the Boxes" style="border:1px solid #e3ddd0;border-radius:999px;background:#f6f2e9;padding:4px 11px;font-size:12px;font-weight:600;color:#6f655b;cursor:pointer">P5 Dominate the Boxes</button><button type="button" class="cf-chip" data-cf-prin="P6 Emotional Control" style="border:1px solid #e3ddd0;border-radius:999px;background:#f6f2e9;padding:4px 11px;font-size:12px;font-weight:600;color:#6f655b;cursor:pointer">P6 Emotional Control</button></div><div class="fnd-row"><div class="fnd-grp"><span class="cap">Confidence</span><div id="cf-conf"><button type="button" class="fnd-pill on" data-cf-conf="Your eye">Your eye</button><button type="button" class="fnd-pill" data-cf-conf="Eye + data">Eye + data</button><button type="button" class="fnd-pill" data-cf-conf="Eye + data + video">+ video</button></div></div><div class="fnd-grp"><span class="cap">Priority</span><div id="cf-prio"><button type="button" class="fnd-pill" data-cf-prio="Low">Low</button><button type="button" class="fnd-pill on" data-cf-prio="Medium">Medium</button><button type="button" class="fnd-pill" data-cf-prio="High">High</button></div></div><div class="fnd-grp"><span class="cap">Status</span><div id="cf-status"><button type="button" class="fnd-pill on" data-cf-status="Open">Open</button><button type="button" class="fnd-pill" data-cf-status="Watching">Watching</button><button type="button" class="fnd-pill" data-cf-status="Confirmed">Confirmed</button></div></div></div><div style="display:flex;gap:9px;align-items:center;margin-top:12px;flex-wrap:wrap"><button type="button" id="cf-send" class="btn gold" style="background:var(--gold,#b8860b);color:#fff;border:0;border-radius:8px;padding:9px 16px;font-weight:600;cursor:pointer">Confirm &amp; send to week →</button><button type="button" id="cf-save" class="btn" style="border:1px solid #e3ddd0;background:#fff;border-radius:8px;padding:9px 16px;font-weight:600;cursor:pointer">Save finding</button><span id="cf-log" style="color:var(--muted,#6f655b);font-size:12.5px"></span></div></div><div class="learning-hero intel-hero">
+          <div><span class="cap">Analyze · Prioritize · Train</span><h2>Step Out match data, turned into what to train</h2><p>Aspire Intelligence reads your Step Out match exports and turns them into clear training priorities for each MLS NEXT team.</p></div>
+          <div class="learning-hero-mark"><b>AFC</b><span>Match Intelligence</span></div>
+        </div>
+        <div class="intel-body">
+          <div class="intel-teams" id="intel-teams"></div>
+          <div class="intel-matchline" id="intel-matchline"></div>
+          <div class="intel-tiles" id="intel-tiles"></div>
+          <div id="intel-trends"></div>
+          <h2 class="intel-sec">Team profile</h2>
+          <div class="intel-cols">
+            <div class="intel-card">
+              <h3>Where possession goes</h3>
+              <p class="intel-lead">Pass origin by third of the pitch — watch where it thins out.</p>
+              <div id="intel-thirds"></div>
+            </div>
+            <div class="intel-card">
+              <h3>Aspire vs opponent</h3>
+              <p class="intel-lead">Same match, both teams.</p>
+              <div class="intel-cmp-head"><span class="t0"></span><span class="t1" id="intel-cmp-t1">US</span><span class="t2" id="intel-cmp-t2">OPP</span></div>
+              <div class="intel-cmp" id="intel-cmp"></div>
+            </div>
+          </div>
+          <h2 class="intel-sec">Train this next</h2>
+          <div class="intel-prio" id="intel-prio"></div>
+          <h2 class="intel-sec">Player development</h2>
+          <div class="intel-tbl-wrap">
+            <table class="intel-tbl">
+              <thead><tr><th class="l">Player</th><th>Involved</th><th>Passes</th><th>Completion</th><th>Def actions</th><th>Dribbles</th><th>Key</th></tr></thead>
+              <tbody id="intel-rows"></tbody>
+            </table>
+          </div>
+          <div class="intel-foot">
+            <span class="intel-badge">Prototype</span>
+            <span>Reads a Step Out match export — live Step Out API sync is the next phase.</span>
+            <span class="intel-dot">•</span>
+            <span>The data asks football questions — you confirm the finding, then it flows to the week.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" data-view="standards" hidden>
+      <div class="topbar">
+        <input class="title-in" aria-label="Team Standards" value="Team Standards" readonly>
+        <span class="workflow-status">Culture &amp; review</span>
+      </div>
+      <div class="scrollwrap">
+        <div class="sheet">
+          <div class="std-lab" id="standards-body"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" data-view="observe" hidden>
+      <div class="topbar">
+        <input class="title-in" aria-label="Coach Observation" value="Coach Observation" readonly>
+        <span class="workflow-status">Coach development</span>
+      </div>
+      <div class="scrollwrap">
+        <div class="sheet">
+          <div id="observe-body"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" data-view="academy" hidden>
+      <div class="topbar pagehdr">
+        <div class="pagehdr-t"><div class="pg-title">Coach Academy</div><div class="pg-sub">Learn. Apply. Develop. Lead.</div></div>
+        <span class="topbar-spacer" style="flex:1"></span>
+        <span class="workflow-status" id="academy-status">Learn the AFC method</span>
+        <button class="btn sm" id="academy-weekcheck" type="button">✓ Week Check</button>
+      </div>
+      <div class="scrollwrap">
+        <div class="sheet">
+          <div class="acad-tabs" id="academy-tabs"><button class="acad-tab on" type="button" data-atab="overview">Overview</button><button class="acad-tab" type="button" data-atab="chapters">Chapters</button><button class="acad-tab" type="button" data-atab="pathway">Development Pathway</button><button class="acad-tab" type="button" data-atab="devplan">My Development</button><button class="acad-tab" type="button" data-atab="resources">Resources</button></div>
+          <div id="academy-overview" hidden></div>
+          <div id="academy-body" hidden></div>
+          <div id="academy-pathway" class="fv-wrap" hidden></div>
+          <div id="academy-devplan" class="fv-wrap" hidden></div>
+          <div id="academy-resources" hidden></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" data-view="learning" hidden>
+      <div class="topbar">
+        <span class="title-in" style="cursor:default">Learning Hub</span>
+        <span class="workflow-status" id="learning-status">Aspire coach development</span>
+        <button class="btn gold sm" id="learning-add" type="button">＋ Add resource</button>
+      </div>
+      <div class="scrollwrap">
+        <div class="learning-hero">
+          <div><span class="cap">Watch · Read · Apply</span><h2>Aspire coaching knowledge, in one place</h2><p>Save articles, coaching videos, session examples and club documents. Add a short application note so every resource connects back to the field.</p></div>
+          <div class="learning-hero-mark"><b>AFC</b><span>Coach Development</span></div>
+        </div>
+        <details class="howitworks" id="learning-howto" open>
+          <summary><span class="hiw-kicker">Start here</span><b>How the Studio works</b><small>The Aspire method, from weekly theme to the field</small></summary>
+          <div class="hiw-body">
+            <p class="hiw-intro">Aspire sessions all follow one grammar. Learn it once and every week gets faster to plan — and every coach teaches the same football.</p>
+            <p style="margin:0 0 14px"><button class="btn gold sm" type="button" data-hgo="academy">🎓 Open the Coach Academy — learn the full method</button> <small style="color:var(--ink-3)">Self-paced chapters, with a Method-Ready badge at the end.</small></p>
+            <div class="hiw-steps">
+              <div class="hiw-step"><span class="hiw-num">1</span><div><b>Set the week’s theme</b><p>Pick the game problem (moment → phase → situation) and the desired behavior. AFC suggests the principles, concepts and habit — edit anything.</p><button class="hiw-cta" type="button" data-hgo="week">Open Week Builder</button></div></div>
+              <div class="hiw-step"><span class="hiw-num">2</span><div><b>Coordinate the microcycle</b><p>The Microcycle Map spreads that one theme across your training days — sweeping from the universal concept early to its final-third application by the weekend.</p><button class="hiw-cta" type="button" data-hgo="week">See the map</button></div></div>
+              <div class="hiw-step"><span class="hiw-num">3</span><div><b>Build each session as a progression</b><p>Every session climbs Activation → Basic Situation → Extended Situation → Training Game → Cool-down: small and isolated to big and game-like.</p></div></div>
+              <div class="hiw-step"><span class="hiw-num">4</span><div><b>Coach each drill the Aspire way</b><p>Every block carries a Target, Drill Dynamics, Rules and Coaching points by moment — plus a Delivery Guide (let them play, question, then add the points), Mistakes &amp; Feedback, and Regression / Progression.</p><button class="hiw-cta" type="button" data-hgo="board">Open the Drill Designer</button></div></div>
+              <div class="hiw-step"><span class="hiw-num">5</span><div><b>Deliver, reflect &amp; share</b><p>Mark the session delivered, capture a quick reflection, and publish the week to the club — or export it as a Coach’s Playbook PDF.</p><button class="hiw-cta" type="button" data-hgo="week">Plan &amp; export a week</button></div></div>
+            </div>
+          </div>
+        </details>
+        <div class="libtabs" id="learning-tabs">
+          <button data-tab="club" class="on">Aspire Hub</button>
+          <button data-tab="mine">My Resources</button>
+        </div>
+        <div class="filterbar learning-filters">
+          <div class="searchwrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><input id="learning-search" placeholder="Search topic, title, author or tag…"></div>
+          <select id="learning-type"><option value="">All resource types</option><option>Coaching Video</option><option>Article</option><option>Session Example</option><option>Club Document</option><option>Podcast</option><option>Course</option></select>
+          <select id="learning-topic"><option value="">All topics</option><option>Game Model</option><option>Training Methodology</option><option>Player Development</option><option>Leadership</option><option>Set Pieces</option><option>Analysis</option><option>Club Operations</option></select>
+        </div>
+        <div class="library-results"><span id="learning-result-meta">0 resources</span><button class="text-btn" id="learning-clear" type="button">Clear filters</button></div>
+        <div class="learning-grid" id="learning-grid"></div>
+      </div>
+    </section>
+
+    <!-- ============ TACTICS BOARD ============ -->
+    <section class="view" data-view="board" hidden>
+      <div class="board-print-head" id="board-print-head"></div>
+      <div class="board-grid">
+        <div class="canvas-col">
+          <div class="topbar">
+            <div class="board-title-stack">
+              <span class="board-title-kicker">Drill name</span>
+              <input class="title-in" id="board-title" placeholder="Name this drill…" value="Reference Rondo 5v2">
+            </div>
+            <div class="new-drill-menu">
+              <button class="btn ghost sm" id="board-new-menu" type="button" aria-haspopup="menu" aria-expanded="false">＋ New</button>
+              <div class="new-drill-pop" id="board-new-pop" role="menu" hidden>
+                <button id="board-new-blank" type="button" role="menuitem">Blank drill</button>
+                <button id="board-new-library" type="button" role="menuitem">Choose from Drill Library</button>
+                <button id="board-new-copy" type="button" role="menuitem">Duplicate current drill</button>
+              </div>
+            </div>
+            <span class="save-state" id="board-save-state">Saved</span>
+            <button class="btn ghost sm" id="board-clear">Clear pitch</button>
+            <button class="btn sm" id="board-share">Share to Club</button>
+            <div class="board-primary-actions">
+              <button class="btn ghost sm" id="insp-toggle" type="button" title="Hide or show the Drill Setup panel to enlarge the pitch">⇥ Hide setup</button>
+              <button class="btn sm" id="board-export" type="button">Export</button>
+              <button class="btn gold sm" id="board-savedrill">Save drill</button>
+              <button class="btn gold sm" id="board-attach" hidden>Save &amp; return to session</button>
+            </div>
+          </div>
+          <div class="attach-banner" id="board-attach-banner" hidden>Designing a diagram / animation for a session block. Build it, add frames if needed, then <b>Save &amp; return</b>.</div>
+          <div class="toolbar" id="board-toolbar">
+            <div class="tgroup" role="group" aria-label="Players &amp; ball">
+              <!-- quick-add removed -->
+              <button class="tool" data-tool="us"><span class="dot" style="background:var(--us)"></span>Us</button>
+              <button class="tool" data-tool="opp"><span class="dot" style="background:var(--opp)"></span>Opp</button>
+              <button class="tool" data-tool="neu"><span class="dot" style="background:var(--neu)"></span>Free</button>
+              <button class="tool" data-tool="ball"><span class="dot" style="background:var(--ball)"></span>Ball</button>
+            </div>
+            <div class="tgroup" role="group" aria-label="Cones &amp; markers">
+              <button class="tool direct-equipment" type="button" data-equipment="cone"><span class="tool-glyph">▲</span>Tall cone</button>
+              <button class="tool direct-equipment" type="button" data-equipment="disc-yellow"><span class="tool-glyph disc" style="background:#facc15"></span>Yellow disc</button>
+              <button class="tool direct-equipment" type="button" data-equipment="disc-red"><span class="tool-glyph disc" style="background:#ef4444"></span>Red disc</button>
+              <button class="tool direct-equipment" type="button" data-equipment="disc-blue"><span class="tool-glyph disc" style="background:#2563eb"></span>Blue disc</button>
+            </div>
+            <div class="tgroup" role="group" aria-label="Goals">
+              <button class="tool direct-equipment" type="button" data-equipment="goal-pop"><span class="tool-glyph goal"></span>Pop-up</button>
+              <button class="tool direct-equipment" type="button" data-equipment="goal-small"><span class="tool-glyph goal"></span>Small</button>
+              <button class="tool direct-equipment" type="button" data-equipment="goal-full"><span class="tool-glyph goal"></span>Full size</button>
+              <button class="tool" data-tool="gate">⁝⁝ Gate</button>
+            </div>
+            <!-- Rotate Selected removed from rail; rotation lives in the floating Edit Object panel for selected equipment -->
+            <div class="tgroup" role="group" aria-label="Field layout">
+              <button class="tool" data-pitch="full">Full</button>
+              <button class="tool" data-pitch="half">Half</button>
+              <button class="tool" data-pitch="third">Final third</button>
+              <button class="tool" data-pitch="thirds">Thirds</button>
+              <button class="tool" data-pitch="double">Double sq.</button>
+              <button class="tool" data-pitch="grid">Grid</button>
+              <button class="tool" data-pitch="square">Square</button>
+              <button class="tool" data-pitch="rectangle">Rectangle</button>
+              <button class="tool" data-pitch="blank">Blank</button>
+              <button class="tool" id="equipment-toggle" type="button">▦ More equipment</button>
+            </div>
+            <div class="tgroup" role="group" aria-label="Zones &amp; labels">
+              <button class="tool" data-tool="zone-square" type="button" title="Drag a square training area on the pitch"><span class="zone-glyph square"></span>Square zone</button>
+              <button class="tool" data-tool="zone-rectangle" type="button" title="Drag a rectangular training area on the pitch"><span class="zone-glyph"></span>Rectangle</button>
+              <button class="tool direct-equipment" data-equipment="zone-circle" type="button">◯ Circle area</button>
+              <button class="tool direct-equipment" data-equipment="note" type="button">T Text note</button>
+            </div>
+            <div class="tgroup" role="group" aria-label="Draw">
+              <button class="tool" data-tool="run"><span class="ln" style="border-top:3px solid var(--run)"></span>Run</button>
+              <button class="tool" data-tool="pass"><span class="ln" style="border-top:3px dashed var(--pass)"></span>Pass</button>
+              <button class="tool" data-tool="press"><span class="ln" style="border-top:3px solid var(--press)"></span>Press</button>
+              <button class="tool" data-tool="dribble">// Dribble</button>
+              <button class="tool" data-tool="shot">⟶ Shot</button>
+              <button class="tool" data-tool="cross">⤴ Cross</button>
+              <button class="tool" data-tool="line"><span class="ln" style="border-top:3px solid #e2e8f0"></span>Line</button>
+              <button class="tool" data-tool="line-dot"><span class="ln" style="border-top:3px dotted #e2e8f0"></span>Dotted</button>
+            </div>
+            <div class="tgroup" role="group" aria-label="Edit">
+              <button class="tool" id="board-undo" type="button" title="Undo (Ctrl/Cmd+Z)">↶ Undo</button>
+              <button class="tool" id="board-redo" type="button" title="Redo (Ctrl/Cmd+Shift+Z)">↷ Redo</button>
+              <button class="tool" id="board-duplicate" type="button" title="Duplicate selected item" disabled>⎘ Duplicate</button>
+            </div>
+            <span class="toolbar-spacer"></span>
+            <div class="tgroup" role="group" aria-label="View">
+              <button class="tool" id="zoom-out" type="button" title="Zoom out">−</button>
+              <button class="tool" id="zoom-fit" type="button" title="Fit pitch">100%</button>
+              <button class="tool" id="zoom-in" type="button" title="Zoom in">+</button>
+              <button class="tool" id="appearance-toggle" type="button">◐ Appearance</button>
+            </div>
+          </div>
+          <div class="appearance-drawer" id="appearance-panel" hidden>
+            <div class="appearance-head">
+              <strong>Diagram appearance</strong>
+              <span>Set the pitch, team, movement and default marker sizes for this drill.</span>
+              <button class="btn ghost sm" id="appearance-reset" type="button">Reset</button>
+              <button class="btn ghost sm" id="appearance-close" type="button">Close</button>
+            </div>
+            <div class="appearance-grid">
+              <div class="appearance-section">
+                <h4>Quick styles</h4>
+                <div class="preset-row" id="appearance-presets">
+                  <button class="preset-btn on" data-preset="coachbook" type="button">Coachbook</button>
+                  <button class="preset-btn" data-preset="classic" type="button">Classic turf</button>
+                  <button class="preset-btn" data-preset="contrast" type="button">High contrast</button>
+                  <button class="preset-btn" data-preset="whiteboard" type="button">Whiteboard</button>
+                </div>
+                <span class="appearance-sub">Field color</span>
+                <div class="field-swatches" id="field-colors">
+                  <button class="field-swatch" type="button" data-field-color="coachbook" style="background:#5c8c3c" title="Coachbook green" aria-label="Coachbook green field"></button>
+                  <button class="field-swatch" type="button" data-field-color="green" style="background:#0f603d" title="Green" aria-label="Green field"></button>
+                  <button class="field-swatch" type="button" data-field-color="dark" style="background:#083f2b" title="Dark green" aria-label="Dark green field"></button>
+                  <button class="field-swatch" type="button" data-field-color="blue" style="background:#155e91" title="Blue" aria-label="Blue field"></button>
+                  <button class="field-swatch" type="button" data-field-color="gray" style="background:#4b5563" title="Gray" aria-label="Gray field"></button>
+                  <button class="field-swatch" type="button" data-field-color="white" style="background:#f8fafc" title="White" aria-label="White field"></button>
+                </div>
+              </div>
+              <div class="appearance-section">
+                <h4>Field setup</h4>
+                <span class="appearance-sub">Pitch view</span>
+                <div class="orientation-row" id="field-orientation">
+                  <button class="preset-btn" data-orientation="landscape" type="button">Landscape</button>
+                  <button class="preset-btn" data-orientation="portrait" type="button">Portrait</button>
+                  <button class="preset-btn" id="field-rotate" type="button" title="Rotate field and every item 90 degrees">↻ 90°</button>
+                </div>
+                <span class="appearance-sub">Surface</span>
+                <select class="appearance-select" id="appearance-surface">
+                  <option value="plain">Plain</option>
+                  <option value="narrow">Narrow stripes</option>
+                  <option value="wide">Wide stripes</option>
+                  <option value="checker">Checkerboard</option>
+                  <option value="training">Training grid</option>
+                </select>
+                <span class="appearance-sub">Guide lines</span>
+                <select class="appearance-select" id="appearance-guides">
+                  <option value="none">None</option>
+                  <option value="halves">Halves</option>
+                  <option value="thirds">Thirds</option>
+                  <option value="four">Four zones</option>
+                  <option value="five">Five channels</option>
+                  <option value="nine">3 × 3 grid</option>
+                </select>
+              </div>
+              <div class="appearance-section">
+                <h4>Custom colors</h4>
+                <div class="color-fields" id="appearance-colors">
+                  <label class="color-field"><input type="color" data-appearance="pitch"><span>Pitch</span></label>
+                  <label class="color-field"><input type="color" data-appearance="pitchAlt"><span>Stripes</span></label>
+                  <label class="color-field"><input type="color" data-appearance="lines"><span>Lines</span></label>
+                  <label class="color-field"><input type="color" data-appearance="zones"><span>Zones</span></label>
+                  <label class="color-field"><input type="color" data-appearance="us"><span>Aspire</span></label>
+                  <label class="color-field"><input type="color" data-appearance="opp"><span>Opponent</span></label>
+                  <label class="color-field"><input type="color" data-appearance="neutral"><span>Neutral</span></label>
+                  <label class="color-field"><input type="color" data-appearance="run"><span>Run</span></label>
+                  <label class="color-field"><input type="color" data-appearance="pass"><span>Pass</span></label>
+                  <label class="color-field"><input type="color" data-appearance="press"><span>Press</span></label>
+                  <label class="color-field"><input type="color" data-appearance="trail"><span>Trail</span></label>
+                </div>
+              </div>
+              <div class="appearance-section">
+                <h4>Default sizes</h4>
+                <label class="range-field"><span>Players</span><input id="appearance-player-size" type="range" min="70" max="170" step="5"><output id="appearance-player-size-out">100%</output></label>
+                <label class="range-field"><span>Equipment</span><input id="appearance-equipment-size" type="range" min="60" max="200" step="5"><output id="appearance-equipment-size-out">100%</output></label>
+                <label class="range-field"><span>Arrows</span><input id="appearance-arrow-size" type="range" min="2" max="9" step="1"><output id="appearance-arrow-size-out">4px</output></label>
+              </div>
+            </div>
+          </div>
+          <div class="equipment-drawer" id="equipment-library" hidden>
+            <div class="eq-head">
+              <strong>Equipment Library</strong>
+              <span class="eq-note">Choose an item, then click or tap the pitch to place it.</span>
+              <div class="eq-rotate" aria-label="Rotate selected equipment">
+                <button id="equipment-rot-left" type="button" title="Rotate left" disabled>↺</button>
+                <button id="equipment-rot-reset" type="button" title="Reset rotation" disabled>0°</button>
+                <button id="equipment-rot-right" type="button" title="Rotate right" disabled>↻</button>
+              </div>
+              <button class="btn ghost sm" id="equipment-close" type="button">Close</button>
+            </div>
+            <div class="eq-groups" id="equipment-groups"></div>
+          </div>
+          <div class="canvas-actions" id="canvas-actions" aria-label="Field controls">
+            <span class="cap">Field controls</span>
+            <button class="tool on" data-tool="move" title="Select and move components">✥ Move</button>
+            <button class="tool" data-tool="erase" title="Erase components">⌫ Erase</button>
+            <span class="canvas-action-hint">Drag to move · double-click an item to edit</span>
+            <span class="meta cap ca-mode" id="board-mode-lbl">Grid · 5 lanes</span>
+            <span class="ca-rotate" aria-label="Rotate selected equipment">
+              <span class="cap">Rotate</span>
+              <button class="tool" id="fc-rot-left" type="button" title="Rotate 45° left" disabled>↺</button>
+              <button class="tool" id="fc-rot-reset" type="button" title="Reset rotation" disabled>0°</button>
+              <button class="tool" id="fc-rot-right" type="button" title="Rotate 45° right" disabled>↻</button>
+            </span>
+          </div>
+          <div class="framebar" id="framebar">
+            <span class="flbl cap">Animation</span>
+            <div class="frames" id="frame-list"></div>
+            <div class="frame-actions" aria-label="Frame controls">
+              <button class="btn sm" id="frame-left" type="button" title="Move frame earlier">←</button>
+              <button class="btn sm" id="frame-right" type="button" title="Move frame later">→</button>
+              <button class="btn sm" id="frame-add" title="Duplicate this frame — then drag players to their next positions">+ Frame</button>
+              <button class="btn sm gold" id="frame-play">▶ Play</button>
+            </div>
+            <label class="trail-control cap" title="Show the movements that brought players and equipment into this frame">
+              <span>Movement trail</span>
+              <select id="history-depth" aria-label="Movement trail history">
+                <option value="off">Off</option>
+                <option value="previous" selected>Previous</option>
+                <option value="three">Last 3</option>
+                <option value="all">All</option>
+              </select>
+            </label>
+            <label class="trail-control cap" title="How long this movement takes">
+              <span>Speed</span>
+              <select id="frame-duration" aria-label="Frame duration"><option value="600">Fast</option><option value="1000" selected>Normal</option><option value="1600">Slow</option><option value="2400">Coach</option></select>
+            </label>
+          </div>
+          <div class="teachbar" id="teachbar">
+            <span class="flbl cap" title="Shown on this frame during Play and in the exported clip — this is how the animation coaches the coach">Coach the clip</span>
+            <select id="frame-phase" aria-label="FIS phase for this moment" title="FIS phase for this moment">
+              <option value="">Phase…</option><option value="SEE">SEE</option><option value="READ">READ</option><option value="HELP">HELP</option><option value="DO">DO</option><option value="CONNECT">CONNECT</option>
+            </select>
+            <button id="frame-focus" class="btn sm" type="button" title="Select a player on the pitch, then tap to highlight them on this frame">★ Focus</button>
+            <input id="frame-cue" type="text" maxlength="140" placeholder="Coaching point for this frame — e.g. “receive on the half-turn, break the line”">
+          </div>
+          <div class="canvas-wrap" id="board-wrap">
+            <div class="quickbar" id="quickbar" aria-label="Quick tools">
+              <span class="qb-lbl">QUICK</span>
+              <button class="qtool" data-tool="us"><span class="dot" style="background:var(--us)"></span>Us</button>
+              <button class="qtool" data-tool="opp"><span class="dot" style="background:var(--opp)"></span>Opp</button>
+              <button class="qtool" data-tool="neu"><span class="dot" style="background:var(--neu)"></span>Free</button>
+              <button class="qtool" data-tool="ball"><span class="dot" style="background:var(--ball)"></span>Ball</button>
+              <span class="qb-div"></span>
+              <button class="qtool" data-equipment="cone"><span class="tool-glyph">▲</span>Cone</button>
+              <span class="qtool qgroup"><span class="qg-lbl">Disc</span><button class="qdot" data-equipment="disc-yellow" style="background:#facc15" title="Yellow disc"></button><button class="qdot" data-equipment="disc-red" style="background:#ef4444" title="Red disc"></button><button class="qdot" data-equipment="disc-blue" style="background:#2563eb" title="Blue disc"></button></span>
+              <button class="qtool" data-equipment="goal-small"><span class="tool-glyph goal"></span>Goal</button>
+              <button class="qtool" data-tool="zone-square"><span class="zone-glyph square"></span>Zone</button>
+              <span class="qb-div"></span>
+              <button class="qtool" data-tool="run"><span class="ln" style="border-top:3px solid var(--run)"></span>Run</button>
+              <button class="qtool" data-tool="pass"><span class="ln" style="border-top:3px dashed var(--pass)"></span>Pass</button>
+              <button class="qtool" data-tool="line"><span class="ln" style="border-top:3px solid #e2e8f0"></span>Line</button>
+            </div>
+            <div class="pitch-stage"><svg class="pitch" id="board-svg" viewBox="0 0 1080 700" preserveAspectRatio="xMidYMid meet" aria-label="Tactics board"></svg></div>
+            <div class="board-empty-help" id="board-empty-help" hidden><b>Build the picture</b><span>Choose a player or equipment tool, then click the pitch. Draw movements and add a frame to animate.</span></div>
+            <div class="insp-sec float-editor" id="insp-obj" data-inspector-panel="selected" hidden>
+              <div class="component-heading"><div class="insp-h cap">Edit object</div><span class="component-badge" id="component-status">Nothing selected</span><button class="fe-close" id="obj-close" type="button" title="Close">×</button></div>
+              <p class="empty-hint" id="insp-empty">Select a player, line, goal, cone or zone to edit its color, size, label or position.</p>
+              <div id="insp-fields" hidden>
+                <div class="component-group-title">Identity</div>
+                <div class="obj-kind" id="obj-kind" hidden><span id="obj-kind-name">Equipment</span><span id="obj-rotval">0°</span></div>
+                <div class="field" id="obj-labelfield"><label class="cap">Label / text</label><input id="obj-label" maxlength="24" placeholder="e.g. 6 or Press trigger"></div>
+                <div class="field" id="obj-teamfield"><label class="cap">Marker</label>
+                  <div class="teamsel" id="obj-team">
+                    <button data-team="us">Us</button><button data-team="opp">Opp</button><button data-team="neu">Free</button>
+                  </div>
+                </div>
+                <div class="field" id="obj-shapefield"><label class="cap">Player graphic</label>
+                  <div class="teamsel" id="obj-shape">
+                    <button data-shape="circle" type="button">Circle</button><button data-shape="jersey" type="button">Jersey</button><button data-shape="square" type="button">Square</button>
+                  </div>
+                </div>
+                <div class="component-group"><div class="component-group-title">Style &amp; size</div><div class="property-grid">
+                  <div class="field"><label class="cap">Size <span id="obj-size-out">100%</span></label><input id="obj-size" type="range" min="50" max="220" step="5" value="100"></div>
+                  <div class="field"><label class="cap">Opacity <span id="obj-opacity-out">100%</span></label><input id="obj-opacity" type="range" min="25" max="100" step="5" value="100"></div>
+                </div>
+                <div class="field"><label class="cap">Color</label><div class="swatch-row" id="obj-colors"></div></div>
+                <div class="property-grid" id="obj-zonefield" hidden>
+                  <div class="field"><label class="cap">Zone width</label><input id="obj-zone-width" type="number" min="40" max="1000" step="10"></div>
+                  <div class="field"><label class="cap">Zone height</label><input id="obj-zone-height" type="number" min="40" max="620" step="10"></div>
+                </div>
+                </div>
+                <div class="component-group"><div class="component-group-title">Transform &amp; arrange</div>
+                <label class="checkrow"><input id="obj-lock" type="checkbox"> Lock item in place</label>
+                <div class="field" id="obj-rotatefield" hidden><label class="cap">Rotate equipment</label>
+                  <div class="teamsel" id="obj-rotate">
+                    <button data-rotate="-45" type="button">↺ 45°</button><button data-rotate="0" type="button">Reset</button><button data-rotate="45" type="button">45° ↻</button>
+                  </div>
+                </div>
+                <div class="object-actions"><button class="btn ghost" id="obj-back" type="button">Send backward</button><button class="btn ghost" id="obj-front" type="button">Bring forward</button><button class="btn ghost" id="obj-copy" type="button">Duplicate</button><button class="btn ghost" id="obj-del" style="color:var(--press);border-color:var(--press)">Delete item</button></div>
+                </div>
+              </div>
+              <div id="insp-arrow-fields" hidden>
+                <div class="component-group-title">Movement line</div>
+                <div class="selection-type"><span id="arrow-kind-name">Movement arrow</span><span id="arrow-width-out">4px</span></div>
+                <div class="field"><label class="cap">Movement type</label><select id="arrow-type"><option value="run">Run</option><option value="pass">Pass</option><option value="press">Press</option><option value="dribble">Dribble</option><option value="shot">Shot</option><option value="cross">Cross</option><option value="line">Line (solid)</option><option value="line-dot">Line (dotted)</option></select></div>
+                <div class="field"><label class="cap">Label</label><input id="arrow-label" maxlength="24" placeholder="e.g. overlap"></div>
+                <div class="field"><label class="cap">Line width</label><input id="arrow-width" type="range" min="2" max="10" step="1" value="4"></div>
+                <div class="field"><label class="cap">Color</label><div class="swatch-row" id="arrow-colors"></div></div>
+                <div class="component-group"><div class="component-group-title">Arrange</div><div class="object-actions"><button class="btn ghost" id="arrow-back" type="button">Send backward</button><button class="btn ghost" id="arrow-front" type="button">Bring forward</button><button class="btn ghost" id="arrow-copy" type="button">Duplicate</button><button class="btn ghost" id="arrow-del" style="color:var(--press);border-color:var(--press)">Delete arrow</button></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <aside class="inspector" id="board-insp">
+          <div class="board-layers" id="board-layers" hidden>
+            <div class="bl-h cap">Layers</div>
+            <label><input type="checkbox" data-layer="players" checked> Players</label>
+            <label><input type="checkbox" data-layer="opponents" checked> Opponents</label>
+            <label><input type="checkbox" data-layer="pass" checked> Passing lines</label>
+            <label><input type="checkbox" data-layer="run" checked> Movement</label>
+            <label><input type="checkbox" data-layer="zones" checked> Zones</label>
+            <label><input type="checkbox" data-layer="labels" checked> Labels</label>
+          </div>
+          <div class="inspector-tabs" role="tablist" aria-label="Drill inspector">
+            <button class="on" id="inspector-details-tab" type="button" role="tab" data-inspector-tab="details" aria-selected="true">Drill Setup</button>
+          </div>
+          <div class="insp-sec" id="insp-drill" data-inspector-panel="details">
+            <div class="insp-h cap" id="inspector-details-heading">Drill setup</div>
+            <div class="field"><label class="cap">Objective <span class="optional-label">What this drill trains</span></label><textarea id="dd-objective" rows="2" placeholder="e.g. Break a low block — find the free player between the lines"></textarea></div><button type="button" id="dd-constraint" class="btn sm" style="margin:2px 0 14px;width:100%;text-align:center">💡 Design a constraint for this drill</button>
+            <div class="field"><label class="cap">Sub-objective <span class="optional-label">Optional</span></label><textarea id="dd-subobjective" rows="2" placeholder="e.g. Third-man runs to receive behind the midfield line"></textarea></div>
+            <details class="fos-drill" id="dd-fos"><summary>FOS object detail <span class="optional-label">makes this an educational object, not just a diagram</span></summary>
+              <div class="field"><label class="cap">Football problem</label><textarea id="dd-fos-problem" rows="2" placeholder="The game problem this drill represents — e.g. progressing under first pressure"></textarea></div>
+              <div class="field"><label class="cap">Desired behavior</label><textarea id="dd-fos-behavior" rows="2" placeholder="What you want to see players do"></textarea></div>
+              <div class="field"><label class="cap">Game picture</label><textarea id="dd-fos-picture" rows="2" placeholder="Where in the real game this looks like"></textarea></div>
+              <div class="field"><label class="cap">Representative relationship</label><input id="dd-fos-relationship" placeholder="Who interacts with whom — e.g. #6 + two 8s vs a front two"></div>
+              <div class="field"><label class="cap">Constraint</label><textarea id="dd-fos-constraint" rows="2" placeholder="The rule that invites the behavior"></textarea></div>
+              <div class="field"><label class="cap">Evidence</label><input id="dd-fos-evidence" placeholder="How you know it's working"></div>
+              <div class="field" style="margin-bottom:0"><label class="cap">Common failure</label><textarea id="dd-fos-failure" rows="2" placeholder="What usually goes wrong / how the picture breaks"></textarea></div>
+            </details>
+            <div class="field"><label class="cap">Drill type <span class="optional-label">Where it sits in a session</span></label>
+              <div class="phasesel" id="dd-phase">
+                <button data-phase="Activation" type="button">Activation</button>
+                <button data-phase="Basic situation" type="button">Basic</button>
+                <button data-phase="Extended situation" type="button">Extended</button>
+                <button data-phase="Training game" type="button">Training game</button>
+              </div>
+            </div>
+            <div class="field"><label class="cap">Category</label><select id="dd-cat" class="dd-select" aria-label="Drill category"></select></div>
+            <div class="field"><label class="cap">Tags <span class="optional-label">Optional · comma-separated, for search</span></label><input id="dd-tags" placeholder="e.g. pressing, finishing, 3rd-man runs"></div>
+            <div class="topic-chips" id="dd-topics" hidden></div>
+            <div class="ag-suggest dd-autotag" id="dd-autotag" hidden></div>
+            <div id="classification-details">
+              <div class="field"><label class="cap">Age group</label><div class="cls-group" id="dd-ages"></div></div>
+              <div class="field"><label class="cap">Game principle</label><div class="cls-group" id="dd-princ"></div></div>
+              <div class="field" style="margin-bottom:0"><label class="cap">Moment</label><div class="cls-group" id="dd-moments"></div></div>
+            </div>
+            <div class="behavior-fields">
+              <div class="field"><label class="cap">IP behavior</label><textarea id="dd-ip-behavior" placeholder="What should players do in possession?"></textarea></div>
+              <div class="field"><label class="cap">OP behavior</label><textarea id="dd-op-behavior" placeholder="What should players do out of possession?"></textarea></div>
+              <div class="field"><label class="cap">Transition behavior</label><textarea id="dd-transition-behavior" placeholder="What happens when possession changes?"></textarea></div>
+            </div>
+            <div id="planning-details">
+            <div class="field"><label class="cap">Players</label><input id="dd-players" placeholder="e.g. 6v6 +3"></div>
+            <div class="field"><label class="cap">Library collection <span class="optional-label">Optional</span></label><input id="dd-folder" list="drill-folders" placeholder="e.g. U14, Pressing, Set Pieces"><small class="field-help">Groups this drill with similar ideas in your Drill Library.</small><datalist id="drill-folders"><option>First Team</option><option>U17–U19</option><option>U15–U16</option><option>U13–U14</option><option>U11–U12</option><option>Set Pieces</option><option>Position Games</option></datalist></div>
+            <div class="field" style="margin-bottom:0"><label class="cap">Space</label><input id="dd-space" placeholder="e.g. 30×25 grid"></div>
+            <div class="property-grid" style="margin-top:11px">
+              <div class="field"><label class="cap">Duration</label><input id="dd-duration" placeholder="e.g. 18 min"></div>
+              <div class="field"><label class="cap">Work / rest</label><input id="dd-workrest" placeholder="e.g. 3×4' / 1'"></div>
+            </div>
+            <div class="field" style="margin-top:11px;margin-bottom:0"><label class="cap">Intensity</label><select id="dd-intensity"><option value="">Select</option><option>Low</option><option>Moderate</option><option>High</option><option>Maximal</option></select></div>
+            <div class="equipment-summary" id="dd-equipment-summary">Equipment updates automatically from the diagram.</div>
+            </div>
+          </div>
+          <!-- Object editor is a floating panel over the canvas (see #insp-obj in #board-wrap) -->
+          <div class="insp-sec" id="insp-detail" data-inspector-panel="details">
+            <div class="insp-h cap">Coaching detail</div>
+            <div class="dtabs" id="dd-tabs">
+              <button data-t="explanation" class="on">Explanation</button>
+              <button data-t="aim">Aim</button>
+              <button data-t="organisation">Organisation</button>
+              <button data-t="coachpoints">Coach Points</button>
+              <button data-t="question">Questions</button>
+              <button data-t="rules">Rules</button>
+              <button data-t="progressions">Progressions</button>
+              <button data-t="regressions">Simplify</button>
+            </div>
+            <textarea id="dd-detail" placeholder="What the drill is and how it flows"></textarea>
+          </div>
+          <div class="insp-sec" data-inspector-panel="details">
+            <div class="insp-h cap">Key</div>
+            <div class="legend2">
+              <div class="r"><span class="k" style="background:var(--us)"></span> Us (Aspire)</div>
+              <div class="r"><span class="k" style="background:var(--opp)"></span> Opponent</div>
+              <div class="r"><span class="k" style="background:var(--neu)"></span> Free / neutral</div>
+              <div class="r"><span class="kl" style="border-top:3px solid var(--run)"></span> Run &nbsp;·&nbsp; <span class="kl" style="border-top:3px dashed var(--pass)"></span> Pass &nbsp;·&nbsp; <span class="kl" style="border-top:3px solid var(--press)"></span> Press</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ LINEUP ============ -->
+    <section class="view" data-view="lineup" hidden>
+      <div class="topbar">
+        <input class="title-in" id="line-title" placeholder="Match / lineup title">
+        <span class="workflow-status">Autosaved lineup</span>
+        <select id="line-form" class="btn" style="padding-right:8px">
+          <option value="4-3-3">4-3-3</option>
+          <option value="4-2-3-1">4-2-3-1</option>
+          <option value="4-4-2">4-4-2</option>
+          <option value="3-4-3">3-4-3</option>
+          <option value="3-5-2">3-5-2</option>
+          <option value="4-3-3-false9">4-3-3 (false 9)</option>
+        </select>
+        <button class="btn sm" id="line-reset" type="button">Reset shape</button>
+      </div>
+      <div class="lineup-grid">
+        <div class="lineup-canvas">
+          <svg class="pitch" id="line-svg" viewBox="0 0 700 1080" preserveAspectRatio="xMidYMid meet" aria-label="Lineup pitch"></svg>
+        </div>
+        <aside class="inspector">
+          <div class="insp-sec">
+            <div class="insp-h cap">Match info</div>
+            <div class="field"><label class="cap">Opponent</label><input id="line-opp" placeholder="e.g. vs. Rovers"></div>
+            <div class="field" style="margin-bottom:0"><label class="cap">Date / venue</label><input id="line-when" placeholder="Sat · Home"></div>
+          </div>
+          <div class="insp-sec" style="padding:14px 0">
+            <div class="insp-h cap" style="padding:0 16px 10px">Starting XI</div>
+            <div class="roster" id="line-roster"></div>
+          </div>
+          <div class="insp-sec"><p class="note">Type names in the roster, or drag any player on the pitch to fine-tune the shape. Numbers show on the pitch.</p></div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ SETTINGS HUB ============ -->
+    <section class="view" data-view="constraint" hidden><div class="topbar"><button class="btn sm" id="cb-back" style="margin-right:10px">← Drill Designer</button><input class="title-in" aria-label="Constraint Builder" value="Constraint Builder" readonly><span class="workflow-status">Shape the environment</span></div><div class="scrollwrap"><div id="constraint-root" class="fv-wrap"></div></div></section><section class="view" data-view="playerdev" hidden><div class="topbar pagehdr"><div class="pagehdr-t"><div class="pg-title">Player 360</div><div class="pg-sub">Development. Opportunity. Pathway.</div></div></div><div class="scrollwrap"><div id="playerdev-root" class="fv-wrap"></div></div></section><section class="view" data-view="settings" hidden>
+      <div class="topbar">
+        <span class="title-in" style="cursor:default">Settings Hub</span>
+        <span class="workflow-status">Account &amp; club language</span>
+      </div>
+      <div class="scrollwrap">
+        <div class="sheet settings-sheet">
+          <div class="settings-intro">
+            <div><span class="step-kicker">Manage</span><h2>One place for the Studio’s setup</h2><p>Manage access, account actions and the shared coaching vocabulary coaches use across plans, sessions and drills.</p></div>
+          </div>
+          <div class="settings-grid">
+            <section class="settings-card">
+              <div class="settings-card-head"><span class="settings-icon">◎</span><div><h3>Account &amp; access</h3><p>Signed-in coach tools and director oversight.</p></div></div>
+              <div class="account-summary"><span class="account-avatar" id="settings-avatar">C</span><div><b id="settings-coach-name">Coach</b><small id="settings-role">Coach account</small></div></div>
+              <div class="settings-actions">
+                <button class="btn" id="api-account" type="button">Coach accounts</button>
+                <button class="btn" id="settings-club-board" type="button">Director dashboard</button>
+                <label class="settings-check"><input type="checkbox" id="intel-access-toggle"> Aspire Intelligence (Step&nbsp;Out) access</label>
+                <a class="btn" href="/meet.html" target="_blank" rel="noopener">How it works</a>
+                <button class="btn settings-signout" id="api-logout" type="button">Sign out</button>
+              </div>
+            </section>
+            <section class="settings-card taxonomy-card">
+              <div class="settings-card-head"><span class="settings-icon">Aa</span><div><h3>Coaching vocabulary</h3><p>Keep AFC standards consistent and add club-specific labels.</p></div></div>
+              <div class="taxonomy-tabs" id="taxonomy-tabs" role="tablist"></div>
+              <div class="taxonomy-toolbar">
+                <div><b id="taxonomy-title">Drill categories</b><small>Standard labels are locked. Custom labels can be removed.</small></div>
+                <form id="taxonomy-form"><input id="taxonomy-input" maxlength="60" placeholder="Add a club label" aria-label="New club label"><button class="btn" type="submit">+ Add</button></form>
+              </div>
+              <div class="taxonomy-list" id="taxonomy-list"></div>
+            </section>
+            <section class="settings-card" style="grid-column:1/-1">
+              <div class="settings-card-head"><span class="settings-icon">🔒</span><div><h3>Methodology Governance</h3><p>The canonical Aspire language every module points to — locked, versioned and director-governed.</p></div></div>
+              <div id="governance-body"></div>
+            </section>
+            <section class="settings-card set-club-card" style="grid-column:1/-1">
+              <div class="settings-card-head"><span class="settings-icon">⬡</span><div><h3>Club &amp; teams</h3><p>Director setup — the teams your staff plan for and the studio's session defaults.</p></div></div>
+              <div class="set-club-grid">
+                <div class="set-club-teams">
+                  <div class="taxonomy-toolbar">
+                    <div><b>Teams</b><small>Used across the planner, calendar and Aspire Intelligence.</small></div>
+                    <form id="team-form"><input id="team-name" maxlength="40" placeholder="e.g. U16 Gold" aria-label="Team name"><select id="team-age" aria-label="Age group"><option>U12</option><option>U13</option><option>U14</option><option>U15</option><option selected>U16</option><option>U17</option><option>U19</option></select><button class="btn" type="submit">+ Add</button></form>
+                    <span class="team-coach-note" id="team-coach-note" hidden>Teams are set up by your club director.</span>
+                  </div>
+                  <div class="set-team-list" id="team-list"></div>
+                </div>
+                <div class="set-club-defaults">
+                  <div class="set-def-head"><b>Session defaults</b><small>Starting point when a coach opens a new session.</small></div>
+                  <label class="set-def-row"><span>Default duration</span><span class="set-def-ctl"><input id="def-dur" type="number" min="30" max="150" step="5"> min</span></label>
+                  <label class="set-def-row"><span>Default competition</span><span class="set-def-ctl"><input id="def-comp" maxlength="30" placeholder="MLS NEXT"></span></label>
+                  <div class="set-def-daysblk"><b>Training days</b><div class="set-def-days" id="def-days"></div></div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CLUB BOARD ============ -->
+    <section class="view" data-view="club" hidden>
+      <div class="topbar pagehdr">
+        <div class="pagehdr-t"><div class="pg-title">Director Command Center</div><div class="pg-sub">Coach the coaches. Develop the players. Strengthen the club.</div></div>
+        <span class="topbar-spacer" style="flex:1"></span>
+        <span class="meta cap" id="club-meta">Director oversight</span>
+        <button class="btn sm" id="club-refresh">Refresh</button>
+        <button class="btn sm" id="club-export">⬇ Export</button>
+      </div>
+      <div class="scrollwrap">
+        <div class="sheet">
+          <div class="cc-tabs" id="club-tabs">
+            <button class="cc-tab on" data-cctab="overview" type="button">Overview</button>
+            <button class="cc-tab" data-cctab="plan" type="button">Plan to Pitch</button>
+            <button class="cc-tab" data-cctab="coaches" type="button">Coaches</button>
+            <button class="cc-tab" data-cctab="players" type="button">Players</button>
+            <button class="cc-tab" data-cctab="methodology" type="button">Methodology</button>
+            <button class="cc-tab" data-cctab="findings" type="button">Findings</button>
+            <button class="cc-tab" data-cctab="reports" type="button">Reports</button>
+          </div>
+          <div class="rolehint" id="club-hint"></div>
+          <div class="cmd-center" id="club-command"></div>
+          <div class="club-stats" id="club-stats"></div>
+          <div class="blk" id="club-method-blk">
+            <div class="oversight-head"><div><h3>Methodology Oversight — this week&rsquo;s plans</h3><div class="sub">Every team&rsquo;s current week at a glance: what they&rsquo;re training and whether the plan holds together on-model. Coach the coaches, not a leaderboard.</div></div><span class="workflow-status" id="club-method-meta"></span></div>
+            <div class="mo-table" id="club-method"></div>
+          </div>
+          <div class="blk" id="club-oversight-blk">
+            <div class="oversight-head"><div><h3>Plan-to-Pitch Oversight</h3><div class="sub">Track whether sessions were planned, delivered and reflected on—without ranking coaches.</div></div><span class="workflow-status" id="club-record-meta">No delivery records</span></div>
+            <div class="oversight-table" id="club-oversight"></div>
+          </div>
+          <div class="blk" id="club-cover-blk">
+            <h3>Principle Coverage</h3>
+            <div class="sub">How often each game principle is being trained across published sessions — spot what the club is under-training.</div>
+            <div class="cover" id="club-cover"></div>
+          </div>
+          <div class="blk" id="club-plan-blk">
+            <h3>Season plan coverage</h3>
+            <div class="sub">Your macrocycle targets per game phase vs what has been published this season.</div>
+            <div class="cover" id="club-plan"></div>
+          </div>
+          <div class="blk">
+            <h3>Published Sessions</h3>
+            <div class="sub" id="club-feed-sub">Everything coaches have published to the club, newest first.</div>
+            <div class="club-filters" id="club-filters"></div>
+            <div id="club-feed"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+<div class="flash" id="flash"></div>
+<div class="modal" id="modal" hidden><div class="modal-card"><button class="modal-x" id="modal-x" aria-label="Close">×</button><div class="modal-body"></div></div></div>
+
+<script type="module" src="/auth.js"></script>
+<script src="js/auth-gate.js"></script>
+
+<script src="js/cloud-sync.js"></script>
+
+<script src="js/data/fos-methodology.js"></script>
+<script src="js/fos-freeze.js"></script>
+<script src="js/data/drill-guide.js"></script>
+<script src="js/app.js"></script>
+
+<!-- ===================== COACH FEEDBACK WIDGET ===================== -->
+<button id="md-quickrec" type="button" aria-label="Quick voice note — record match thoughts">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+  <span class="md-fab-lbl">Voice note</span>
+</button>
+<script src="js/voice-note-fab.js"></script>
+
+<button id="afcfb-fab" type="button" aria-haspopup="dialog">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  <span class="lbl">Give feedback</span>
+</button>
+
+<div id="afcfb-overlay" role="dialog" aria-modal="true" aria-label="Coach feedback">
+  <div id="afcfb-modal">
+    <button id="afcfb-x" type="button" aria-label="Close">&times;</button>
+    <div class="afcfb-head">
+      <div class="afcfb-kick">Aspire FC · Coaching Studio</div>
+      <h3>How's the Studio working?</h3>
+      <p>Tell us what's useful and what's getting in your way — it shapes what we fix next.</p>
+    </div>
+    <div class="afcfb-body" id="afcfb-form-body">
+      <div class="afcfb-who">
+        <div class="afcfb-fld"><label for="afcfb-name">Your name (optional)</label><input id="afcfb-name" type="text" placeholder="Coach…"></div>
+        <div class="afcfb-fld"><label for="afcfb-team">Team / age (optional)</label><input id="afcfb-team" type="text" placeholder="e.g. 2013 Boys"></div>
+      </div>
+      <p class="afcfb-note">For each area, how useful is it right now? Skip anything you didn't try.</p>
+      <div id="afcfb-rates"></div>
+      <div class="afcfb-openq"><label for="afcfb-useful">What's the most useful part so far?</label><textarea id="afcfb-useful" placeholder="The thing you'd miss if we took it away…"></textarea></div>
+      <div class="afcfb-openq"><label for="afcfb-missing">What's confusing, clunky, or missing?</label><textarea id="afcfb-missing" placeholder="Anything that slowed you down…"></textarea></div>
+      <div class="afcfb-openq"><label for="afcfb-add">Anything you'd add?</label><textarea id="afcfb-add" placeholder="A tool, a shortcut, something from how you plan…"></textarea></div>
+      <div class="afcfb-actions"><button id="afcfb-send" type="button">Send feedback</button><small>Goes to AFC staff — nothing public.</small></div>
+    </div>
+    <div class="afcfb-thanks" id="afcfb-thanks">
+      <div class="afcfb-badge">✓</div>
+      <h3>Thanks, coach.</h3>
+      <p>That's exactly what we need. <a id="afcfb-mailto" href="#" style="display:none">Didn't send? Email it instead.</a></p>
+    </div>
+  </div>
+</div>
+
+<form name="studio-feedback" data-netlify="true" netlify-honeypot="afcfb-bot" hidden aria-hidden="true">
+  <input type="hidden" name="form-name" value="studio-feedback">
+  <input type="text" name="coach_name"><input type="text" name="team">
+  <input type="text" name="rate_designer"><input type="text" name="rate_layout"><input type="text" name="rate_objectives">
+  <input type="text" name="rate_library"><input type="text" name="rate_planner"><input type="text" name="rate_overall">
+  <textarea name="most_useful"></textarea><textarea name="confusing_missing"></textarea><textarea name="would_add"></textarea>
+  <input name="afcfb-bot">
+</form>
+
+<script src="js/feedback-widget.js"></script>
+<!-- =================== END COACH FEEDBACK WIDGET =================== -->
+
+</body>
+</html>
